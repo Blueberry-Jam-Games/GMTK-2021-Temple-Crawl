@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 24239337}
   - component: {fileID: 24239336}
   - component: {fileID: 24239335}
+  - component: {fileID: 24239339}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: Untagged
@@ -239,6 +240,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &24239339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24239334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 0}
 --- !u!1 &642240910
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,6 +324,9 @@ MonoBehaviour:
   gameplayHeight: 16
   minWinDistanceFromWall: 1
   maxWinDistanceFromWall: 2
+  crystalMinAngle: 45
+  crystalMinDistance: 1
+  crystalMaxDistance: 4
 --- !u!4 &755133036
 Transform:
   m_ObjectHideFlags: 0

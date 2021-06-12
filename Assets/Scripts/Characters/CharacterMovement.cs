@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D charRigidbody;
 
     private Vector2 velocityStore = new Vector2();
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        charRigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -23,6 +23,6 @@ public class CharacterMovement : MonoBehaviour
         velocityStore.x = moveX;
         velocityStore.y = moveY;
 
-        rigidbody.velocity = velocityStore;
+        charRigidbody.velocity = velocityStore;
     }
 }

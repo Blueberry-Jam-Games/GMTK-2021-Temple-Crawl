@@ -17,9 +17,23 @@ public class DungeonGenerator : MonoBehaviour
     public int minWinDistanceFromWall = 1;
     public int maxWinDistanceFromWall = 2;
 
+    public float crystalMinDistance = 1f;
+    public float crystalMaxDistance = 5f;
+
+    private int minExtraRooms = 3;
+    private int maxExtraRooms = 7;
+
+    private int startingRoomX;
+    private int startingRoomY;
+
+    private float percentRemoveConnection = 0.75f;
+
+    private int visibleTiles;
+
     // Start is called before the first frame update
     void Start()
     {
+        crystalMinDistance = gameplayWidth / 2f - 2f;
         DoWorldGeneration();
         GeneratePrefabs();
     }
@@ -29,6 +43,7 @@ public class DungeonGenerator : MonoBehaviour
     private void DoWorldGeneration()
     {
         world = new PreGenArea[gameplayWidth, gameplayHeight];
+        
 
         //Initialize
         for(int x = 0; x < gameplayWidth; x++)
@@ -48,6 +63,12 @@ public class DungeonGenerator : MonoBehaviour
 
         //Step 1: Place special rooms
         PlaceWinRoom();
+        PlaceCrystalRooms();
+        PlaceExtraRooms();
+        RemoveConnections();
+        CheckConnections();
+        CheckRooms();
+        CheckMap();
     }
 
     private void PlaceWinRoom()
@@ -57,23 +78,254 @@ public class DungeonGenerator : MonoBehaviour
         int fromWall = Random.Range(minWinDistanceFromWall, maxWinDistanceFromWall);
         int maxForWall = (wallGeneratedOn == 0 || wallGeneratedOn == 2) ? gameplayHeight : gameplayWidth;
         int alongWall = Random.Range(0, maxForWall);
-        int startRoomX;
-        int startRoomY;
+        int winRoomX;
+        int winRoomY;
         if (wallGeneratedOn == 0 || wallGeneratedOn == 2)
         {
-            startRoomY = wallGeneratedOn == 2 ? fromWall : gameplayHeight - fromWall;
-            startRoomX = alongWall;
+            winRoomY = wallGeneratedOn == 2 ? fromWall : gameplayHeight - fromWall;
+            winRoomX = alongWall;
         }
         else
         {
-            startRoomX = wallGeneratedOn == 1 ? fromWall : gameplayHeight - fromWall;
-            startRoomY = alongWall;
+            winRoomX = wallGeneratedOn == 1 ? fromWall : gameplayHeight - fromWall;
+            winRoomY = alongWall;
         }
 
-        SetRoomData(startRoomX, startRoomY, RoomType.PLAYER_START, false, false, false, false);
+        SetRoomData(winRoomX, winRoomY, RoomType.VICTORY, false, false, false, false);
 
         //Room 2, start room
+        int startRoomX = gameplayWidth - winRoomX;
+        int startRoomY = gameplayHeight - winRoomY;
+        SetRoomData(startRoomX, startRoomY, RoomType.PLAYER_START, false, false, false, false);
+        startingRoomX = startRoomX;
+        startingRoomY = startRoomY;
+    }
 
+    private void PlaceCrystalRooms()
+    {
+        float angle1 = Random.Range(0f, 120f) * Mathf.Deg2Rad;
+        float angle2 = Random.Range(120f, 240f) * Mathf.Deg2Rad;
+        float angle3 = Random.Range(240f, 360f) * Mathf.Deg2Rad;
+
+        PlaceRoom(angle1, RoomType.CRYSTAL_1);
+        PlaceRoom(angle2, RoomType.CRYSTAL_2);
+        PlaceRoom(angle3, RoomType.CRYSTAL_3);
+
+        //local function
+        void PlaceRoom(float angle, RoomType number)
+        {
+            float distance = Random.Range(crystalMinDistance, crystalMaxDistance);
+            float offsetX = Mathf.Cos(angle) * distance;
+            float offsetY = Mathf.Sin(angle) * distance;
+
+            int finalRoomX = gameplayWidth / 2 + Mathf.RoundToInt(offsetX);
+            int finalRoomY = gameplayHeight / 2 + Mathf.RoundToInt(offsetY);
+
+            Debug.Log("Crystal xy " + finalRoomX + ", " + finalRoomY);
+
+            SetRoomData(finalRoomX, finalRoomY, number, false, false, false, false);
+        }
+    }
+
+    private void PlaceExtraRooms()
+    {
+        int count = Random.Range(minExtraRooms, maxExtraRooms);
+        int roomsPlaced = 0;
+        for (int i = 0; i < count || roomsPlaced < minExtraRooms; i++)
+        {
+            int randomX = Random.Range(0, gameplayWidth);
+            int randomY = Random.Range(0, gameplayHeight);
+
+            if(world[randomX, randomY].type == RoomType.HALLWAY)
+            {
+                SetRoomData(randomX, randomY, RoomType.ROOM, false, false, false, false);
+                roomsPlaced++;
+            }
+        }
+    }
+
+    private void RemoveConnections()
+    {
+        for(int x = 0; x < gameplayWidth; x++)
+        {
+            for(int y = 0; y < gameplayHeight; y++)
+            {
+                if(world[x, y].type == RoomType.HALLWAY)
+                {
+                    world[x, y].connectedUp = Random.Range(0f, 1f) > percentRemoveConnection;
+                    world[x, y].connectedDown = Random.Range(0f, 1f) > percentRemoveConnection;
+                    world[x, y].connectedLeft = Random.Range(0f, 1f) > percentRemoveConnection;
+                    world[x, y].connectedRight = Random.Range(0f, 1f) > percentRemoveConnection;
+                }
+            }
+        }
+    }
+
+    private void CheckConnections()
+    {
+        for (int x = 0; x < gameplayWidth; x++)
+        {
+            for (int y = 0; y < gameplayHeight; y++)
+            {
+                if (world[x, y].type == RoomType.HALLWAY)
+                {
+                    //Check Up
+                    if (y + 1 < gameplayHeight)
+                    {
+                        if (world[x, y + 1].connectedDown == true && world[x, y].connectedUp == false)
+                        {
+                            world[x, y].connectedUp = true;
+                        }
+                    }
+
+                    //Check Down
+                    if (y - 1 >= 0)
+                    {
+                        if (world[x, y - 1].connectedUp == true && world[x, y].connectedDown == false)
+                        {
+                            world[x, y].connectedDown = true;
+                        }
+                    }
+
+                    //Check left
+                    if (x > 0)
+                    {
+                        if (world[x - 1, y].connectedRight == true && world[x, y].connectedLeft == false)
+                        {
+                            world[x, y].connectedLeft = true;
+                        }
+                    }
+
+                    //Check Right
+                    if (x + 1 < gameplayWidth)
+                    {
+                        if (world[x + 1, y].connectedLeft == true && world[x, y].connectedRight == false)
+                        {
+                            world[x, y].connectedRight = true;
+                        }
+                    }
+
+                    if(x == gameplayWidth - 1)
+                    {
+                        world[x, y].connectedRight = false;
+                    }
+
+                    if (x == 0)
+                    {
+                        world[x, y].connectedLeft = false;
+                    }
+
+                    if (y == gameplayHeight - 1)
+                    {
+                        world[x, y].connectedUp = false;
+                    }
+
+                    if (y == 0)
+                    {
+                        world[x, y].connectedDown = false;
+                    }
+                }
+            }
+        }
+    }
+
+    private void CheckRooms()
+    {
+        for (int x = 0; x < gameplayWidth; x++)
+        {
+            for (int y = 0; y < gameplayHeight; y++)
+            {
+                if (1 == 1) //world[x, y].type == RoomType.ROOM
+                {
+                    if(ConnectionCount(x, y) == 0)
+                    {
+                        if(y > 0)
+                        {
+                            world[x, y].connectedDown = true;
+                            world[x, y - 1].connectedUp = true;
+                        } else if (y > 0)
+                        {
+                            world[x, y].connectedUp = true;
+                            world[x, y + 1].connectedDown = true;
+                        }
+
+                    }
+
+                }
+            }
+        }
+    }
+
+    private void CheckMap()
+    {
+        int x = startingRoomX;
+        int y = startingRoomY;
+        
+        world[x,y].accessable = true;
+        visibleTiles = 0;
+        do
+        {
+            CheckMapRecursive(x, y);
+
+            bool exitLoop = false;
+
+            for (int checkX = 0; checkX < gameplayWidth; checkX++)
+            {
+                for (int checkY = 0; checkY < gameplayHeight; checkY++)
+                {
+                    if(world[checkX, checkY].accessable == true && checkY < gameplayHeight - 1 && world[checkX, checkY + 1].accessable == false)
+                    {
+                        world[checkX, checkY].connectedUp = true;
+                        world[checkX, checkY + 1].connectedDown = true;
+                        x = checkX;
+                        y = checkY + 1;
+                        exitLoop = true;
+                        break;
+                    } 
+                    else if (world[checkX, checkY].accessable == true && checkY > 0 && world[checkX, checkY - 1].accessable == false)
+                    {
+                        world[checkX, checkY].connectedDown = true;
+                        world[checkX, checkY - 1].connectedUp = true;
+                        x = checkX;
+                        y = checkY - 1;
+                        exitLoop = true;
+                        break;
+                    }
+                }
+                if (exitLoop)
+                {
+                    break;
+                }
+            }
+
+        } while (visibleTiles < gameplayWidth * gameplayHeight);
+    }
+    private void CheckMapRecursive(int x, int y)
+    {
+        bool[] connections = IsHallConnected(x, y);
+        world[x, y].accessable = true;
+        Debug.Log(x + "  " + y + "Accessable");
+        visibleTiles++;
+
+        if (connections[0] && world[x, y + 1].accessable == false)
+        {
+            CheckMapRecursive(x, y + 1);
+        }
+
+        if (connections[1] && world[x, y - 1].accessable == false)
+        {
+            CheckMapRecursive(x, y - 1);
+        }
+
+        if (connections[2] && world[x - 1, y].accessable == false)
+        {
+            CheckMapRecursive(x - 1, y);
+        }
+
+        if (connections[3] && world[x + 1, y].accessable == false)
+        {
+            CheckMapRecursive(x + 1, y);
+        }
     }
 
     private void GeneratePrefabs()
@@ -111,11 +363,82 @@ public class DungeonGenerator : MonoBehaviour
 
     private void SetRoomData(int x, int y, RoomType type, bool north, bool south, bool east, bool west)
     {
+        Debug.Log("Set room data " + type + " at " + x + ", " + y);
+
         world[x, y].type = type;
         world[x, y].connectedUp = north;
         world[x, y].connectedDown = south;
         world[x, y].connectedRight = east;
         world[x, y].connectedLeft = west;
+    }
+
+    private bool[] IsHallConnected(int x, int y)
+    {
+
+        bool[] output = new bool[] { false, false, false, false };
+        //Check Up
+        if (y + 1 < gameplayHeight)
+        {
+            if (world[x, y + 1].connectedDown == true)
+            {
+                output[0] = true;
+            }
+        }
+
+        //Check Down
+        if (y - 1 >= 0)
+        {
+            if (world[x, y - 1].connectedUp == true)
+            {
+                output[1] = true;
+            }
+        }
+
+        //Check left
+        if (x > 0)
+        {
+            if (world[x - 1, y].connectedRight == true)
+            {
+                output[2] = true;
+            }
+        }
+
+        //Check Right
+        if (x + 1 < gameplayWidth)
+        {
+            if (world[x + 1, y].connectedLeft == true)
+            {
+                output[3] = true;
+            }
+        }
+
+        return output;
+    }
+
+    private int ConnectionCount(int x, int y)
+    {
+        int count = 0;
+        if (world[x, y].connectedUp)
+        {
+            count++;
+        }
+
+        if (world[x, y].connectedDown)
+        {
+            count++;
+        }
+
+        if (world[x, y].connectedDown)
+        {
+            count++;
+        }
+
+        if (world[x, y].connectedDown)
+        {
+            count++;
+        }
+
+        return count;
     }
 
     public struct PreGenArea
@@ -126,6 +449,7 @@ public class DungeonGenerator : MonoBehaviour
         public bool connectedDown;
         public bool connectedLeft;
         public bool connectedRight;
+        public bool accessable;
     }
 
     public enum RoomType
