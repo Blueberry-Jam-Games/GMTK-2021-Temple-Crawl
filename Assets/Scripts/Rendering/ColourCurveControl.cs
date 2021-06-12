@@ -42,7 +42,7 @@ public class ColourCurveControl : MonoBehaviour
         localCurve.MoveKey(index, keyframes[index]);
         colourControl.hueVsSat.Override(localCurve);
     }
-
+        
     [System.Serializable]
     private struct Pair
     {
