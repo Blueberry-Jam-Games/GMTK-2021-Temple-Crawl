@@ -17,7 +17,8 @@ public class GameController : MonoBehaviour
     protected GameCrystal winCrystal;
     //Camera
     protected ColourCurveControl cameraColours;
-    //TODO HUD
+    //Life HUD
+    public HealthManagement hud;
     public float minSaturation = 0.05f;
 
     private void Awake()
@@ -57,6 +58,13 @@ public class GameController : MonoBehaviour
         cameraColours = camera.GetComponent<ColourCurveControl>();
         GameObject playerObj = GameObject.FindWithTag("Player");
         player = playerObj.GetComponent<CharacterMovement>();
+        GameObject hudObj = GameObject.FindWithTag("HealthManager");
+        hud = hudObj.GetComponent<HealthManagement>();
+    }
+
+    public void NotifyHudOfHealthChange(int newhealth)
+    {
+        hud.UpdateHealthDisplay(newhealth);
     }
 
     public void RegisterCrystal(GameCrystal crystal)

@@ -8,6 +8,7 @@ TagManager:
   - PlayerSword
   - EnemyAttack
   - EnemyBody
+  - HealthManager
   layers:
   - Default
   - TransparentFX
