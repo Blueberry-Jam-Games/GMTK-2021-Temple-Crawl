@@ -20,13 +20,13 @@ public class DungeonGenerator : MonoBehaviour
     public float crystalMinDistance = 1f;
     public float crystalMaxDistance = 5f;
 
-    private int minExtraRooms = 3;
-    private int maxExtraRooms = 7;
+    private int minExtraRooms = 5;
+    private int maxExtraRooms = 10;
 
     private int startingRoomX;
     private int startingRoomY;
 
-    private float percentRemoveConnection = 0.75f;
+    private float percentRemoveConnection = 0.6f;
 
     private int visibleTiles;
 
@@ -94,8 +94,8 @@ public class DungeonGenerator : MonoBehaviour
         SetRoomData(winRoomX, winRoomY, RoomType.VICTORY, false, false, false, false);
 
         //Room 2, start room
-        int startRoomX = gameplayWidth - winRoomX;
-        int startRoomY = gameplayHeight - winRoomY;
+        int startRoomX = gameplayWidth - winRoomX - 1;
+        int startRoomY = gameplayHeight - winRoomY - 1;
         SetRoomData(startRoomX, startRoomY, RoomType.PLAYER_START, false, false, false, false);
         startingRoomX = startRoomX;
         startingRoomY = startRoomY;
@@ -167,63 +167,60 @@ public class DungeonGenerator : MonoBehaviour
         {
             for (int y = 0; y < gameplayHeight; y++)
             {
-                if (world[x, y].type == RoomType.HALLWAY)
+                //Check Up
+                if (y + 1 < gameplayHeight)
                 {
-                    //Check Up
-                    if (y + 1 < gameplayHeight)
+                    if (world[x, y + 1].connectedDown == true && world[x, y].connectedUp == false)
                     {
-                        if (world[x, y + 1].connectedDown == true && world[x, y].connectedUp == false)
-                        {
-                            world[x, y].connectedUp = true;
-                        }
+                        world[x, y].connectedUp = true;
                     }
+                }
 
-                    //Check Down
-                    if (y - 1 >= 0)
+                //Check Down
+                if (y - 1 >= 0)
+                {
+                    if (world[x, y - 1].connectedUp == true && world[x, y].connectedDown == false)
                     {
-                        if (world[x, y - 1].connectedUp == true && world[x, y].connectedDown == false)
-                        {
-                            world[x, y].connectedDown = true;
-                        }
+                        world[x, y].connectedDown = true;
                     }
+                }
 
-                    //Check left
-                    if (x > 0)
+                //Check left
+                if (x > 0)
+                {
+                    if (world[x - 1, y].connectedRight == true && world[x, y].connectedLeft == false)
                     {
-                        if (world[x - 1, y].connectedRight == true && world[x, y].connectedLeft == false)
-                        {
-                            world[x, y].connectedLeft = true;
-                        }
+                        world[x, y].connectedLeft = true;
                     }
+                }
 
-                    //Check Right
-                    if (x + 1 < gameplayWidth)
+                //Check Right
+                if (x + 1 < gameplayWidth)
+                {
+                    if (world[x + 1, y].connectedLeft == true && world[x, y].connectedRight == false)
                     {
-                        if (world[x + 1, y].connectedLeft == true && world[x, y].connectedRight == false)
-                        {
-                            world[x, y].connectedRight = true;
-                        }
+                        world[x, y].connectedRight = true;
                     }
+                }
 
-                    if(x == gameplayWidth - 1)
-                    {
-                        world[x, y].connectedRight = false;
-                    }
+                if(x == gameplayWidth - 1)
+                {
+                    world[x, y].connectedRight = false;
+                }
 
-                    if (x == 0)
-                    {
-                        world[x, y].connectedLeft = false;
-                    }
+                if (x == 0)
+                {
+                    world[x, y].connectedLeft = false;
+                }
 
-                    if (y == gameplayHeight - 1)
-                    {
-                        world[x, y].connectedUp = false;
-                    }
+                if (y == gameplayHeight - 1)
+                {
+                    world[x, y].connectedUp = false;
+                }
 
-                    if (y == 0)
-                    {
-                        world[x, y].connectedDown = false;
-                    }
+                if (y == 0)
+                {
+                    world[x, y].connectedDown = false;
                 }
             }
         }
@@ -235,20 +232,51 @@ public class DungeonGenerator : MonoBehaviour
         {
             for (int y = 0; y < gameplayHeight; y++)
             {
-                if (1 == 1) //world[x, y].type == RoomType.ROOM
+                if (world[x, y].type != RoomType.HALLWAY) //world[x, y].type == RoomType.ROOM
                 {
+                    Debug.Log("Room: " + ConnectionCount(x, y));
                     if(ConnectionCount(x, y) == 0)
                     {
                         if(y > 0)
                         {
                             world[x, y].connectedDown = true;
                             world[x, y - 1].connectedUp = true;
-                        } else if (y > 0)
+                        } else if (y + 1< gameplayHeight)
                         {
                             world[x, y].connectedUp = true;
                             world[x, y + 1].connectedDown = true;
                         }
 
+                    }
+
+                    while(ConnectionCount(x, y) > 1)
+                    {
+                        if (Random.Range(0, 100) >= 50)
+                        {
+                            if (world[x, y].connectedDown)
+                            {
+                                world[x, y].connectedDown = false;
+                                world[x, y - 1].connectedUp = false;
+                            }
+                            else if (world[x, y].connectedUp)
+                            {
+                                world[x, y].connectedUp = false;
+                                world[x, y + 1].connectedDown = false;
+                            }
+                        }
+                        else
+                        {
+                            if (world[x, y].connectedLeft)
+                            {
+                                world[x, y].connectedLeft = false;
+                                world[x - 1, y].connectedRight = false;
+                            }
+                            else if (world[x, y].connectedRight)
+                            {
+                                world[x, y].connectedRight = false;
+                                world[x + 1, y].connectedLeft = false;
+                            }
+                        }
                     }
 
                 }
@@ -273,7 +301,7 @@ public class DungeonGenerator : MonoBehaviour
             {
                 for (int checkY = 0; checkY < gameplayHeight; checkY++)
                 {
-                    if(world[checkX, checkY].accessable == true && checkY < gameplayHeight - 1 && world[checkX, checkY + 1].accessable == false)
+                    if(world[checkX, checkY].accessable == true && checkY < gameplayHeight - 1 && world[checkX, checkY + 1].accessable == false && world[checkX, checkY + 1].type == RoomType.HALLWAY && world[checkX, checkY].type == RoomType.HALLWAY)
                     {
                         world[checkX, checkY].connectedUp = true;
                         world[checkX, checkY + 1].connectedDown = true;
@@ -282,12 +310,30 @@ public class DungeonGenerator : MonoBehaviour
                         exitLoop = true;
                         break;
                     } 
-                    else if (world[checkX, checkY].accessable == true && checkY > 0 && world[checkX, checkY - 1].accessable == false)
+                    else if (world[checkX, checkY].accessable == true && checkY > 0 && world[checkX, checkY - 1].accessable == false && world[checkX, checkY - 1].type == RoomType.HALLWAY && world[checkX, checkY].type == RoomType.HALLWAY)
                     {
                         world[checkX, checkY].connectedDown = true;
                         world[checkX, checkY - 1].connectedUp = true;
                         x = checkX;
                         y = checkY - 1;
+                        exitLoop = true;
+                        break;
+                    }
+                    else if (world[checkX, checkY].accessable == true && checkX > 0 && world[checkX - 1, checkY].accessable == false && world[checkX - 1, checkY].type == RoomType.HALLWAY && world[checkX, checkY].type == RoomType.HALLWAY)
+                    {
+                        world[checkX, checkY].connectedLeft = true;
+                        world[checkX - 1, checkY].connectedRight = true;
+                        x = checkX - 1;
+                        y = checkY;
+                        exitLoop = true;
+                        break;
+                    }
+                    if (world[checkX, checkY].accessable == true && checkX < gameplayWidth - 1 && world[checkX + 1, checkY].accessable == false && world[checkX + 1, checkY].type == RoomType.HALLWAY && world[checkX, checkY].type == RoomType.HALLWAY)
+                    {
+                        world[checkX, checkY].connectedRight = true;
+                        world[checkX + 1, checkY].connectedLeft = true;
+                        x = checkX + 1;
+                        y = checkY;
                         exitLoop = true;
                         break;
                     }
@@ -300,11 +346,11 @@ public class DungeonGenerator : MonoBehaviour
 
         } while (visibleTiles < gameplayWidth * gameplayHeight);
     }
+
     private void CheckMapRecursive(int x, int y)
     {
         bool[] connections = IsHallConnected(x, y);
         world[x, y].accessable = true;
-        Debug.Log(x + "  " + y + "Accessable");
         visibleTiles++;
 
         if (connections[0] && world[x, y + 1].accessable == false)
@@ -428,12 +474,12 @@ public class DungeonGenerator : MonoBehaviour
             count++;
         }
 
-        if (world[x, y].connectedDown)
+        if (world[x, y].connectedLeft)
         {
             count++;
         }
 
-        if (world[x, y].connectedDown)
+        if (world[x, y].connectedRight)
         {
             count++;
         }
