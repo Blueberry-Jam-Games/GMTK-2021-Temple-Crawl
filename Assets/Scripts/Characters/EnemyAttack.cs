@@ -13,6 +13,7 @@ public class EnemyAttack : MonoBehaviour
         if (collision.tag.Equals("Player"))
         {
             int damage = Random.Range(minDamage, maxDamage);
+            Debug.Log("Damaging player for " + damage);
             CharacterMovement cm = collision.gameObject.GetComponent<CharacterMovement>();
             cm.ReceiveDamageFromEnemy(damage);
         }
