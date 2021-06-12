@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5844685885352884941}
   - component: {fileID: 4160481968167693220}
   - component: {fileID: 4419700443635048342}
+  - component: {fileID: 933284455577335850}
   m_Layer: 0
   m_Name: hall_west
   m_TagString: Untagged
@@ -109,6 +110,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &933284455577335850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158738940735587047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -2, y: -1, z: 0}
+  - {x: -1, y: -1, z: 0}
+  - {x: -1, y: 1, z: 0}
+  - {x: -2, y: 1, z: 0}
+  m_ShapePathHash: -1584007915
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 62248
 --- !u!1 &1472648199344886039
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,6 +148,7 @@ GameObject:
   - component: {fileID: 8265078221940742450}
   - component: {fileID: 195706450300330332}
   - component: {fileID: 3018608598151796021}
+  - component: {fileID: 5907162350049868126}
   m_Layer: 0
   m_Name: hall_SE
   m_TagString: Untagged
@@ -245,6 +273,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &5907162350049868126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472648199344886039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -1, y: -2, z: 0}
+  - {x: 2, y: -2, z: 0}
+  - {x: 2, y: 1, z: 0}
+  - {x: 1, y: 1, z: 0}
+  - {x: 1, y: -1, z: 0}
+  - {x: -1, y: -1, z: 0}
+  m_ShapePathHash: -1166571619
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 62314
 --- !u!1 &2035463479071701216
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +337,7 @@ Transform:
   - {fileID: 2054068267154694619}
   - {fileID: 8741071759734448206}
   m_Father: {fileID: 8251738207545973777}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2717572581629835822
 GameObject:
@@ -296,6 +352,7 @@ GameObject:
   - component: {fileID: 9105822305978720882}
   - component: {fileID: 3576422500319497439}
   - component: {fileID: 4005967205031320129}
+  - component: {fileID: 1022277008357993638}
   m_Layer: 0
   m_Name: CollidersTop
   m_TagString: Untagged
@@ -421,6 +478,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1022277008357993638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717572581629835822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -4, y: 1, z: 0}
+  - {x: -0.9624678, y: 1.0375323, z: 0}
+  - {x: -0.9624678, y: 4.0079756, z: 0}
+  - {x: -3.9437013, y: 3.9892094, z: 0}
+  m_ShapePathHash: 1416250635
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 62250
 --- !u!1 &3167171287647846178
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +516,7 @@ GameObject:
   - component: {fileID: 4156623905256528531}
   - component: {fileID: 7596453117097484633}
   - component: {fileID: 2140844705376672226}
+  - component: {fileID: 1113473361321388266}
   m_Layer: 0
   m_Name: hall_NE
   m_TagString: Untagged
@@ -557,6 +641,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1113473361321388266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3167171287647846178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -1, y: 1, z: 0}
+  - {x: 1, y: 1, z: 0}
+  - {x: 1, y: -1, z: 0}
+  - {x: 2, y: -1, z: 0}
+  - {x: 2, y: 2, z: 0}
+  - {x: -1, y: 2, z: 0}
+  m_ShapePathHash: 1450674077
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 62252
 --- !u!1 &4389466793108861478
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,6 +680,7 @@ GameObject:
   - component: {fileID: 8251738207545973777}
   - component: {fileID: 5219601627159308911}
   - component: {fileID: -5216421044033227711}
+  - component: {fileID: 4684777287882440118}
   m_Layer: 0
   m_Name: HallBase
   m_TagString: Untagged
@@ -587,7 +700,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7906824186460558270}
+  - {fileID: 5661603303680655170}
   - {fileID: 3550531119815623366}
+  - {fileID: 7991071261781783306}
   - {fileID: 445057999114997027}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -663,6 +778,19 @@ MonoBehaviour:
   wallSE: {fileID: 1472648199344886039}
   wallSW: {fileID: 8101353492966154139}
   wallNW: {fileID: 7653507764973574680}
+--- !u!114 &4684777287882440118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4389466793108861478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f48a8d66b2adc46887f23a3a88ac01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
 --- !u!1 &5929870588754019754
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,6 +802,7 @@ GameObject:
   - component: {fileID: 3501614802809556244}
   - component: {fileID: 6267299198611775754}
   - component: {fileID: 1392115319923161298}
+  - component: {fileID: 8687401969058955968}
   m_Layer: 0
   m_Name: hall_east
   m_TagString: Untagged
@@ -772,6 +901,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &8687401969058955968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5929870588754019754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: 1, y: -1, z: 0}
+  - {x: 2, y: -1, z: 0}
+  - {x: 2, y: 1, z: 0}
+  - {x: 1, y: 1, z: 0}
+  m_ShapePathHash: -74058475
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 62362
 --- !u!1 &6732337428400226746
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,6 +938,7 @@ GameObject:
   - component: {fileID: 3272433113595908800}
   - component: {fileID: 780847638749569339}
   - component: {fileID: 3345331613945863295}
+  - component: {fileID: 6880870704480561833}
   m_Layer: 0
   m_Name: hall_south
   m_TagString: Untagged
@@ -881,6 +1037,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6880870704480561833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6732337428400226746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -1, y: -2, z: 0}
+  - {x: 1, y: -2, z: 0}
+  - {x: 1, y: -1, z: 0}
+  - {x: -1, y: -1, z: 0}
+  m_ShapePathHash: -577374955
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 62330
 --- !u!1 &7159947494878368543
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,6 +1074,7 @@ GameObject:
   - component: {fileID: 6858022404271608981}
   - component: {fileID: 2189434503749366636}
   - component: {fileID: 385540999961802877}
+  - component: {fileID: 5080844594664126769}
   m_Layer: 0
   m_Name: hall_north
   m_TagString: Untagged
@@ -990,6 +1173,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5080844594664126769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7159947494878368543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -1, y: 1, z: 0}
+  - {x: 1, y: 1, z: 0}
+  - {x: 1, y: 2, z: 0}
+  - {x: -1, y: 2, z: 0}
+  m_ShapePathHash: -912919275
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 62306
 --- !u!1 &7653507764973574680
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,6 +1211,7 @@ GameObject:
   - component: {fileID: 6090257891813064858}
   - component: {fileID: 8501042139801990120}
   - component: {fileID: 3418360255415761347}
+  - component: {fileID: 8244066978392331289}
   m_Layer: 0
   m_Name: hall_NW
   m_TagString: Untagged
@@ -1126,6 +1336,91 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &8244066978392331289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7653507764973574680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -2, y: -1, z: 0}
+  - {x: -1, y: -1, z: 0}
+  - {x: -1, y: 1, z: 0}
+  - {x: 1, y: 1, z: 0}
+  - {x: 1, y: 2, z: 0}
+  - {x: -2, y: 2, z: 0}
+  m_ShapePathHash: -210270307
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 62354
+--- !u!1 &7752017203530129067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5661603303680655170}
+  - component: {fileID: 8848721122206492451}
+  m_Layer: 0
+  m_Name: CollidersTop2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5661603303680655170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7752017203530129067}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.54, y: 3.49, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8251738207545973777}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8848721122206492451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7752017203530129067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.5, y: -2.4141452, z: 0}
+  - {x: 2.4704437, y: -2.395379, z: 0}
+  - {x: 2.5079756, y: 0.51876616, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+  m_ShapePathHash: 2034550597
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 62366
 --- !u!1 &7838702243540268954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,6 +1434,7 @@ GameObject:
   - component: {fileID: 3262064471221410694}
   - component: {fileID: 518221811648017861}
   - component: {fileID: 8219177781091506250}
+  - component: {fileID: 140490820602479367}
   m_Layer: 0
   m_Name: CollidersBottom
   m_TagString: Untagged
@@ -1158,7 +1454,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8251738207545973777}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!61 &6423521847046547727
 BoxCollider2D:
@@ -1264,6 +1560,89 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &140490820602479367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7838702243540268954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: 1.0187664, y: 1.0213467, z: 0}
+  - {x: 4.018766, y: 1.0401127, z: 0}
+  - {x: 3.9624677, y: 3.9730244, z: 0}
+  - {x: 1, y: 3.9917903, z: 0}
+  m_ShapePathHash: 723168020
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 62230
+--- !u!1 &8072515718319439675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7991071261781783306}
+  - component: {fileID: 7261810232604728556}
+  m_Layer: 0
+  m_Name: CollidersBottom2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7991071261781783306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072515718319439675}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8251738207545973777}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &7261810232604728556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072515718319439675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -3.9904997, y: 1.0388225, z: 0}
+  - {x: -1.0012903, y: 1.0012903, z: 0}
+  - {x: -0.98252416, y: 3.971734, z: 0}
+  - {x: -4.0467987, y: 4.0092664, z: 0}
+  m_ShapePathHash: 1537642934
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 62334
 --- !u!1 &8101353492966154139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,6 +1655,7 @@ GameObject:
   - component: {fileID: 6812590128517939245}
   - component: {fileID: 150191540330830153}
   - component: {fileID: 3125268550407601007}
+  - component: {fileID: 1479270338029004651}
   m_Layer: 0
   m_Name: hall_SW
   m_TagString: Untagged
@@ -1400,3 +1780,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1479270338029004651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8101353492966154139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -2, y: -2, z: 0}
+  - {x: 1, y: -2, z: 0}
+  - {x: 1, y: -1, z: 0}
+  - {x: -1, y: -1, z: 0}
+  - {x: -1, y: 1, z: 0}
+  - {x: -2, y: 1, z: 0}
+  m_ShapePathHash: -344488035
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 62258
