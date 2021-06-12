@@ -21,7 +21,7 @@ public class CharacterMovement : MonoBehaviour
     private Animator playerAnimator;
     private bool isAttackingNow = false;
 
-    private float health = 12;
+    private int health = 12;
 
     // Start is called before the first frame update
     void Start()
@@ -124,6 +124,6 @@ public class CharacterMovement : MonoBehaviour
     public void ReceiveDamageFromEnemy(int damage)
     {
         health -= damage;
-        GameController.Instance.NotifyHudOfHealthChange(damage);
+        GameController.Instance.NotifyHudOfHealthChange(health);
     }
 }

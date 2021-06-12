@@ -67,6 +67,16 @@ public class GameController : MonoBehaviour
         hud.UpdateHealthDisplay(newhealth);
     }
 
+    public float DistanceFromPlayer(Vector3 test)
+    {
+        return Vector3.Distance(test, player.transform.position);
+    }
+
+    public Vector3 GetPlayerPosition()
+    {
+        return player.transform.position;
+    }
+
     public void RegisterCrystal(GameCrystal crystal)
     {
         if (crystal.IsWin())
