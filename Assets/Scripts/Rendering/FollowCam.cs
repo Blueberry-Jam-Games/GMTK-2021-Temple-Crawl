@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FollowCam : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
 
     public float maxXoffset;
     public float maxYoffset;
@@ -14,6 +14,7 @@ public class FollowCam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
         replacementPostion = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 

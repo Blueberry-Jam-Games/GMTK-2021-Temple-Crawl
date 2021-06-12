@@ -8,10 +8,13 @@ public class CharacterMovement : MonoBehaviour
 
     public float speedmultiplier = 3f;
 
+    private Vector2 newLocationStore;
+
     // Start is called before the first frame update
     void Start()
     {
         charRigidbody = GetComponent<Rigidbody2D>();
+        newLocationStore = new Vector2();
     }
 
     // Update is called once per frame
@@ -53,8 +56,9 @@ public class CharacterMovement : MonoBehaviour
         {
             newRotation = 135f;
         }
-
-        charRigidbody.velocity = new Vector2(moveX, moveY);
+        newLocationStore.x = moveX;
+        newLocationStore.y = moveY;
+        charRigidbody.velocity = newLocationStore;
         transform.rotation = Quaternion.Euler(0f, 0f, newRotation);
     }
 }
