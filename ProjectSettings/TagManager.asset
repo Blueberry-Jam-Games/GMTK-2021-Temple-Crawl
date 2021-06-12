@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Crystal
+  - PlayerSword
+  - EnemyAttack
+  - EnemyBody
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,9 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class CharacterMovement : MonoBehaviour
 {
+    private readonly string attackAnim = "PlayerAttack";
+    private readonly string idleAnim = "Player_Idle";
+
     private Rigidbody2D charRigidbody;
 
     public float speedmultiplier = 3f;
@@ -15,11 +18,36 @@ public class CharacterMovement : MonoBehaviour
 
     public bool[] claimedCrystals = new bool[] {false, false, false};
 
+    private Animator playerAnimator;
+    private bool isAttackingNow = false;
+
     // Start is called before the first frame update
     void Start()
     {
         charRigidbody = GetComponent<Rigidbody2D>();
         newLocationStore = new Vector2();
+        playerAnimator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (!isAttackingNow)
+            {
+                Debug.Log("Playing attack");
+                playerAnimator.Play(attackAnim);
+                isAttackingNow = true;
+                StartCoroutine(FreeAttackLater());
+            }
+        }
+    }
+
+    private IEnumerator FreeAttackLater()
+    {
+        yield return new WaitForSeconds(12f / 30f);
+        isAttackingNow = false;
+        playerAnimator.Play(idleAnim);
     }
 
     // Update is called once per frame
