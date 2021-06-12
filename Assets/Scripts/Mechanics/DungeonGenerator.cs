@@ -10,6 +10,8 @@ public class DungeonGenerator : MonoBehaviour
     public GameObject hallPrefab;
     public GameObject roomPrefab;
 
+    public VisabilityCuller visabilityCuller;
+
     //Tuning Varaibles
     [Header("Tuning Varaibles")]
     public int tileSize = 8;
@@ -390,6 +392,10 @@ public class DungeonGenerator : MonoBehaviour
     private void GeneratePrefabs()
     {
         Transform rootTransform = worldRoot.transform;
+        visabilityCuller.rooms = new GeneratedArea[gameplayWidth, gameplayHeight];
+        visabilityCuller.width = gameplayWidth;
+        visabilityCuller.height = gameplayHeight;
+
         for (int x = 0; x < gameplayWidth; x++)
         {
             for(int y = 0; y < gameplayHeight; y++)
@@ -398,6 +404,7 @@ public class DungeonGenerator : MonoBehaviour
                 GeneratedArea area = creating.GetComponent<GeneratedArea>();
                 PreGenArea pga = world[x, y];
                 area.SetWallConfig(pga.type, pga.connectedRight, pga.connectedUp, pga.connectedLeft, pga.connectedDown);
+                visabilityCuller.rooms[x, y] = area;
             }
         }
     }

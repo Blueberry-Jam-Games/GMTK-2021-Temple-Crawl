@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6612452102331160228}
   - component: {fileID: 4320860027966669558}
   - component: {fileID: 661087599454146268}
+  - component: {fileID: 6154355071192286915}
   m_Layer: 0
   m_Name: wall_north
   m_TagString: Untagged
@@ -109,6 +110,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6154355071192286915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217873676396388170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -1, y: 3, z: 0}
+  - {x: 1, y: 3, z: 0}
+  - {x: 1, y: 4, z: 0}
+  - {x: -1, y: 4, z: 0}
+  m_ShapePathHash: 1771435285
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 64010
 --- !u!1 &2927955503561416169
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,6 +147,7 @@ GameObject:
   - component: {fileID: 4067685302563985329}
   - component: {fileID: 1512189168873743786}
   - component: {fileID: 2425713305384705085}
+  - component: {fileID: 4080484433280106359}
   m_Layer: 0
   m_Name: wall_south
   m_TagString: Untagged
@@ -218,6 +246,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4080484433280106359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2927955503561416169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -1, y: -4, z: 0}
+  - {x: 1, y: -4, z: 0}
+  - {x: 1, y: -3, z: 0}
+  - {x: -1, y: -3, z: 0}
+  m_ShapePathHash: 1335227669
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 63990
 --- !u!1 &4385416143688099242
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,6 +285,7 @@ GameObject:
   - component: {fileID: 7232810455010969873}
   - component: {fileID: 1862001219625857664}
   - component: {fileID: 1690636014578903553}
+  - component: {fileID: 7503608449550553636}
   m_Layer: 0
   m_Name: TopColliders
   m_TagString: Untagged
@@ -356,6 +411,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &7503608449550553636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385416143688099242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -4, y: 1, z: 0}
+  - {x: -3, y: 1, z: 0}
+  - {x: -3, y: 3, z: 0}
+  - {x: -1, y: 3, z: 0}
+  - {x: -1, y: 4, z: 0}
+  - {x: -4, y: 4, z: 0}
+  m_ShapePathHash: -2055764067
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 64022
 --- !u!1 &4855997552304610149
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,6 +450,7 @@ GameObject:
   - component: {fileID: 7158384499181694136}
   - component: {fileID: 3142424022434890906}
   - component: {fileID: 1796246859518665801}
+  - component: {fileID: 1955677345095788212}
   m_Layer: 0
   m_Name: RoomBase
   m_TagString: Untagged
@@ -386,7 +470,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1746236388354910428}
+  - {fileID: 2410071006700669061}
   - {fileID: 2789266905704985741}
+  - {fileID: 4429359835091159916}
   - {fileID: 6592232488660772336}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -459,6 +545,78 @@ MonoBehaviour:
   wallWest: {fileID: 5125136380053023362}
   wallSouth: {fileID: 2927955503561416169}
   crystalPrefabRef: {fileID: 1629694716538668941, guid: b0a460767b2089148a8fae79c7d6e9f4, type: 3}
+--- !u!114 &1955677345095788212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4855997552304610149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f48a8d66b2adc46887f23a3a88ac01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+--- !u!1 &5103171977172167455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4429359835091159916}
+  - component: {fileID: 3902036510029602688}
+  m_Layer: 0
+  m_Name: BottomColliders (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4429359835091159916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5103171977172167455}
+  m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7158384499181694136}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+--- !u!114 &3902036510029602688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5103171977172167455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: 1, y: 3, z: 0}
+  - {x: 3, y: 3, z: 0}
+  - {x: 3, y: 1, z: 0}
+  - {x: 4, y: 1, z: 0}
+  - {x: 4, y: 4, z: 0}
+  - {x: 1, y: 4, z: 0}
+  m_ShapePathHash: 1702332317
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -1446288
 --- !u!1 &5125136380053023362
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +628,7 @@ GameObject:
   - component: {fileID: 4791831212594765883}
   - component: {fileID: 4904990808345332957}
   - component: {fileID: 5165784572480011143}
+  - component: {fileID: 4898532581235660443}
   m_Layer: 0
   m_Name: wall_west
   m_TagString: Untagged
@@ -568,6 +727,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &4898532581235660443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5125136380053023362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -4, y: -1, z: 0}
+  - {x: -3, y: -1, z: 0}
+  - {x: -3, y: 1, z: 0}
+  - {x: -4, y: 1, z: 0}
+  m_ShapePathHash: 1452668181
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 64002
 --- !u!1 &6179899975500391107
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,6 +766,7 @@ GameObject:
   - component: {fileID: 1228125740004465514}
   - component: {fileID: 2451713475167795977}
   - component: {fileID: 3623053968268624074}
+  - component: {fileID: 7716985374170080720}
   m_Layer: 0
   m_Name: BottomColliders
   m_TagString: Untagged
@@ -600,7 +786,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7158384499181694136}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!61 &3788609960305788804
 BoxCollider2D:
@@ -706,6 +892,93 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &7716985374170080720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6179899975500391107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: 1, y: 3, z: 0}
+  - {x: 3, y: 3, z: 0}
+  - {x: 3, y: 1, z: 0}
+  - {x: 4, y: 1, z: 0}
+  - {x: 4, y: 4, z: 0}
+  - {x: 1, y: 4, z: 0}
+  m_ShapePathHash: 1702332317
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 64024
+--- !u!1 &8368627012680505926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2410071006700669061}
+  - component: {fileID: 5998283355417019301}
+  m_Layer: 0
+  m_Name: TopColliders (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2410071006700669061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8368627012680505926}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7158384499181694136}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!114 &5998283355417019301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8368627012680505926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -4, y: 1, z: 0}
+  - {x: -3, y: 1, z: 0}
+  - {x: -3, y: 3, z: 0}
+  - {x: -1, y: 3, z: 0}
+  - {x: -1, y: 4, z: 0}
+  - {x: -4, y: 4, z: 0}
+  m_ShapePathHash: -2055764067
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -1446660
 --- !u!1 &8937704736507993945
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,6 +990,7 @@ GameObject:
   - component: {fileID: 3396573355384830153}
   - component: {fileID: 4116839474782780314}
   - component: {fileID: 883876887597423273}
+  - component: {fileID: 135559301115052538}
   m_Layer: 0
   m_Name: wall_east
   m_TagString: Untagged
@@ -815,6 +1089,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &135559301115052538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8937704736507993945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: 3, y: -1, z: 0}
+  - {x: 4, y: -1, z: 0}
+  - {x: 4, y: 1, z: 0}
+  - {x: 3, y: 1, z: 0}
+  m_ShapePathHash: -1407847147
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 63950
 --- !u!1 &9209303080470305496
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,5 +1147,5 @@ Transform:
   - {fileID: 4791831212594765883}
   - {fileID: 4067685302563985329}
   m_Father: {fileID: 7158384499181694136}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
