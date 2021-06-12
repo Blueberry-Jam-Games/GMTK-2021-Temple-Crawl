@@ -20,19 +20,20 @@ public class VisabilityCuller : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (rooms != null)
         {
+            Vector3 playerPos = player.transform.position;
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
                 {
-                    if (Vector3.Distance(player.transform.position, rooms[x, y].transform.position) > cullDistance)
+                    if (Vector3.Distance(playerPos, rooms[x, y].transform.position) > cullDistance)
                     {
                         rooms[x, y].gameObject.SetActive(false);
                     }
-                    else if (Vector3.Distance(player.transform.position, rooms[x, y].transform.position) < restoreDistance)
+                    else if (Vector3.Distance(playerPos, rooms[x, y].transform.position) < restoreDistance)
                     {
                         rooms[x, y].gameObject.SetActive(true);
                     }

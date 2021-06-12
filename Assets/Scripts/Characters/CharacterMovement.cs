@@ -101,7 +101,9 @@ public class CharacterMovement : MonoBehaviour
     {
         Color newLightCol = GameController.Instance.GetPlayerLightColor();
         playerLight.color = newLightCol;
-        playerLight.pointLightOuterRadius = GameController.Instance.GetPlayerLightRadius(); 
+        playerLight.pointLightInnerRadius = GameController.Instance.GetPlayerLightRadius();
+        playerLight.pointLightOuterRadius = GameController.Instance.GetPlayerLightOuterRadius();
+        playerLight.intensity = GameController.Instance.GetPlayerLightIntensity();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

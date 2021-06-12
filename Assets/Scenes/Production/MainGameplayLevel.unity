@@ -156,7 +156,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
@@ -565,11 +565,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyframeInput:
-  - time: 0.1
+  - time: 0.16
     value: 0.5
-  - time: 0.3777
+  - time: 0.5
     value: 0.5
-  - time: 0.63
+  - time: 0.83
     value: 0.5
 --- !u!114 &1259496807
 MonoBehaviour:
@@ -641,6 +641,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1397580019365707538, guid: 6d47fc577b77a094096c09a0a1bdbb0b, type: 3}
+      propertyPath: m_ShadowIntensity
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397580019365707538, guid: 6d47fc577b77a094096c09a0a1bdbb0b, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.325
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397580019365707538, guid: 6d47fc577b77a094096c09a0a1bdbb0b, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8553381285404294296, guid: 6d47fc577b77a094096c09a0a1bdbb0b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -684,6 +696,10 @@ PrefabInstance:
     - target: {fileID: 8553381285404294296, guid: 6d47fc577b77a094096c09a0a1bdbb0b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553381285404294298, guid: 6d47fc577b77a094096c09a0a1bdbb0b, type: 3}
+      propertyPath: speedmultiplier
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8553381285404294301, guid: 6d47fc577b77a094096c09a0a1bdbb0b, type: 3}
       propertyPath: m_Name

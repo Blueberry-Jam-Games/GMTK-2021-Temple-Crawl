@@ -140,11 +140,37 @@ public class GameController : MonoBehaviour
         if(winCrystal != null)
         {
             float distance = Vector3.Distance(player.transform.position, winCrystal.transform.position);
-            return Mathf.Lerp(6f, 2f, distance / 128);
+            return Mathf.Lerp(4f, 1f, distance / 96);
+        }
+        else
+        {
+            return 1f;
+        }
+    }
+
+    public float GetPlayerLightOuterRadius()
+    {
+        if (winCrystal != null)
+        {
+            float distance = Vector3.Distance(player.transform.position, winCrystal.transform.position);
+            return Mathf.Lerp(10f, 6f, distance / 128);
         }
         else
         {
             return 6f;
+        }
+    }
+
+    public float GetPlayerLightIntensity()
+    {
+        if (winCrystal != null)
+        {
+            float distance = Vector3.Distance(player.transform.position, winCrystal.transform.position);
+            return Mathf.Lerp(1f, 0.7f, distance / 196);
+        }
+        else
+        {
+            return 0.5f;
         }
     }
 
