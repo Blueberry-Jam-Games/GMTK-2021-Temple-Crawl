@@ -20,13 +20,13 @@ public class DungeonGenerator : MonoBehaviour
     public float crystalMinDistance = 1f;
     public float crystalMaxDistance = 5f;
 
-    private int minExtraRooms = 5;
-    private int maxExtraRooms = 10;
+    public int minExtraRooms = 5;
+    public int maxExtraRooms = 10;
 
     private int startingRoomX;
     private int startingRoomY;
 
-    private float percentRemoveConnection = 0.6f;
+    public float percentRemoveConnection = 0.6f;
 
     private int visibleTiles;
 
@@ -69,6 +69,7 @@ public class DungeonGenerator : MonoBehaviour
         CheckConnections();
         CheckRooms();
         CheckMap();
+        ExtraFeatures();
     }
 
     private void PlaceWinRoom()
@@ -121,7 +122,7 @@ public class DungeonGenerator : MonoBehaviour
             int finalRoomX = gameplayWidth / 2 + Mathf.RoundToInt(offsetX);
             int finalRoomY = gameplayHeight / 2 + Mathf.RoundToInt(offsetY);
 
-            Debug.Log("Crystal xy " + finalRoomX + ", " + finalRoomY);
+            //Debug.Log("Crystal xy " + finalRoomX + ", " + finalRoomY);
 
             SetRoomData(finalRoomX, finalRoomY, number, false, false, false, false);
         }
@@ -234,7 +235,7 @@ public class DungeonGenerator : MonoBehaviour
             {
                 if (world[x, y].type != RoomType.HALLWAY) //world[x, y].type == RoomType.ROOM
                 {
-                    Debug.Log("Room: " + ConnectionCount(x, y));
+                    //Debug.Log("Room: " + ConnectionCount(x, y));
                     if(ConnectionCount(x, y) == 0)
                     {
                         if(y > 0)
@@ -347,6 +348,18 @@ public class DungeonGenerator : MonoBehaviour
         } while (visibleTiles < gameplayWidth * gameplayHeight);
     }
 
+    private void ExtraFeatures()
+    {
+        for (int checkX = 0; checkX < gameplayWidth; checkX++)
+        {
+            for (int checkY = 0; checkY < gameplayHeight; checkY++)
+            {
+
+
+            }
+        }
+    }
+
     private void CheckMapRecursive(int x, int y)
     {
         bool[] connections = IsHallConnected(x, y);
@@ -409,7 +422,7 @@ public class DungeonGenerator : MonoBehaviour
 
     private void SetRoomData(int x, int y, RoomType type, bool north, bool south, bool east, bool west)
     {
-        Debug.Log("Set room data " + type + " at " + x + ", " + y);
+        //Debug.Log("Set room data " + type + " at " + x + ", " + y);
 
         world[x, y].type = type;
         world[x, y].connectedUp = north;
@@ -425,37 +438,25 @@ public class DungeonGenerator : MonoBehaviour
         //Check Up
         if (y + 1 < gameplayHeight)
         {
-            if (world[x, y + 1].connectedDown == true)
-            {
-                output[0] = true;
-            }
+            output[0] = world[x, y + 1].connectedDown;
         }
 
         //Check Down
         if (y - 1 >= 0)
         {
-            if (world[x, y - 1].connectedUp == true)
-            {
-                output[1] = true;
-            }
+            output[1] = world[x, y - 1].connectedUp;
         }
 
         //Check left
         if (x > 0)
         {
-            if (world[x - 1, y].connectedRight == true)
-            {
-                output[2] = true;
-            }
+            output[2] = world[x - 1, y].connectedRight;
         }
 
         //Check Right
         if (x + 1 < gameplayWidth)
         {
-            if (world[x + 1, y].connectedLeft == true)
-            {
-                output[3] = true;
-            }
+            output[3] = world[x + 1, y].connectedLeft;
         }
 
         return output;
