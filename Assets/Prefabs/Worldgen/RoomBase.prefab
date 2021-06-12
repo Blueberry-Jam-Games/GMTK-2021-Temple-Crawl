@@ -458,6 +458,7 @@ MonoBehaviour:
   wallNorth: {fileID: 1217873676396388170}
   wallWest: {fileID: 5125136380053023362}
   wallSouth: {fileID: 2927955503561416169}
+  crystalPrefabRef: {fileID: 1629694716538668941, guid: b0a460767b2089148a8fae79c7d6e9f4, type: 3}
 --- !u!1 &5125136380053023362
 GameObject:
   m_ObjectHideFlags: 0

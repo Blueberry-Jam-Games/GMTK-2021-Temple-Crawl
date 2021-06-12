@@ -397,7 +397,7 @@ public class DungeonGenerator : MonoBehaviour
                 GameObject creating = GameObject.Instantiate(GetPrefabforRoomType(x, y), new Vector3(x * 8, y * 8, 0), Quaternion.identity, rootTransform);
                 GeneratedArea area = creating.GetComponent<GeneratedArea>();
                 PreGenArea pga = world[x, y];
-                area.SetWallConfig(pga.connectedRight, pga.connectedUp, pga.connectedLeft, pga.connectedDown);
+                area.SetWallConfig(pga.type, pga.connectedRight, pga.connectedUp, pga.connectedLeft, pga.connectedDown);
             }
         }
     }

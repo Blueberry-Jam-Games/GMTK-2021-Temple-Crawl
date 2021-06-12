@@ -17,13 +17,16 @@ public abstract class GeneratedArea : MonoBehaviour
     protected bool wallWestEnabled = false;
     protected bool wallSouthEnabled = false;
 
-    public void SetWallConfig(bool east, bool north, bool west, bool south)
+    protected DungeonGenerator.RoomType type;
+
+    public void SetWallConfig(DungeonGenerator.RoomType type, bool east, bool north, bool west, bool south)
     {
         wallEastEnabled = east;
         wallNorthEnabled = north;
         wallWestEnabled = west;
         wallSouthEnabled = south;
         wallConfigSet = true;
+        this.type = type;
     }
 
     protected virtual void ApplyWallConfig()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -8,7 +9,11 @@ public class CharacterMovement : MonoBehaviour
 
     public float speedmultiplier = 3f;
 
+    public Light2D playerLight;
+
     private Vector2 newLocationStore;
+
+    public bool[] claimedCrystals = new bool[] {false, false, false};
 
     // Start is called before the first frame update
     void Start()
@@ -60,5 +65,29 @@ public class CharacterMovement : MonoBehaviour
         newLocationStore.y = moveY;
         charRigidbody.velocity = newLocationStore;
         transform.rotation = Quaternion.Euler(0f, 0f, newRotation);
+    }
+
+    private void LateUpdate()
+    {
+        Color newLightCol = GameController.Instance.GetPlayerLightColor();
+        playerLight.color = newLightCol;
+        playerLight.pointLightOuterRadius = GameController.Instance.GetPlayerLightRadius(); 
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag.Equals("Crystal"))
+        {
+            GameCrystal crystalComponent = other.gameObject.GetComponent<GameCrystal>();
+            if(crystalComponent.type == CrystalType.C_WIN)
+            {
+                //Win level
+                Debug.Log("Win Win Win!!!");
+            }
+            else
+            { 
+                claimedCrystals[crystalComponent.GetNumber()] = true;
+            }
+        }
     }
 }

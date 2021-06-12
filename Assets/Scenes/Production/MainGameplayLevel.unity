@@ -514,7 +514,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyframeInput:
-  - time: 0
+  - time: 0.1
+    value: 0.5
+  - time: 0.3777
+    value: 0.5
+  - time: 0.63
     value: 0.5
 --- !u!114 &1259496807
 MonoBehaviour:
@@ -835,6 +839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80716cf0819c9834eb6af523c92cb3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minSaturation: 0.05
 --- !u!4 &1583428942
 Transform:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     //Camera
     protected ColourCurveControl cameraColours;
     //TODO HUD
+    public float minSaturation = 0.05f;
 
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
+            Instance = this;
             crystals = new GameCrystal[3];
         }
     }
@@ -85,9 +87,51 @@ public class GameController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    private void Update()
+    public float GetColourBrightness(int colourIndex)
     {
-        
+        if(player.claimedCrystals[colourIndex])
+        {
+            return 0.5f;
+        }
+
+        float linearDistance = Vector3.Distance(player.transform.position, crystals[colourIndex].transform.position);
+        return -(0.5f-minSaturation) / 96f * linearDistance + minSaturation + 0.5f; //static value of normal saturation
+    }
+
+    public Color GetPlayerLightColor()
+    {
+        float brightness1 = Square(GetColourBrightness(0));
+        Color c1 = cameraColours.GetColorAtKeyframe(0); //TODO get from camera
+        float brightness2 = Square(GetColourBrightness(1));
+        Color c2 = cameraColours.GetColorAtKeyframe(1); //TODO
+        float brightness3 = Square(GetColourBrightness(2));
+        Color c3 = cameraColours.GetColorAtKeyframe(2);
+
+        //Average
+        float red = Square(c1.r) * brightness1 + Square(c2.r) * brightness2 + Square(c3.r) * brightness3;
+        float green = Square(c1.g) * brightness1 + Square(c2.g) * brightness2 + Square(c3.g) * brightness3;
+        float blue = Square(c1.b) * brightness1 + Square(c2.b) * brightness2 + Square(c3.b) * brightness3;
+
+        float totalDistance = brightness1 + brightness2 + brightness3;
+
+        return new Color(red / totalDistance, green / totalDistance, blue / totalDistance);
+    }
+
+    public float GetPlayerLightRadius()
+    {
+        if(winCrystal != null)
+        {
+            float distance = Vector3.Distance(player.transform.position, winCrystal.transform.position);
+            return Mathf.Lerp(6f, 2f, distance / 128);
+        }
+        else
+        {
+            return 6f;
+        }
+    }
+
+    private float Square(float root)
+    {
+        return root * root;
     }
 }

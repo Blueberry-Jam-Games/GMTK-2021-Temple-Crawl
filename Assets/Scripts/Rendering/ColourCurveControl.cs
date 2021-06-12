@@ -27,13 +27,32 @@ public class ColourCurveControl : MonoBehaviour
         VolumeProfile profile = camVolume.sharedProfile;
         if(profile.TryGet<ColorCurves>(out ColorCurves cols))
         {
-            Debug.Log("colour control found");
+            //Debug.Log("colour control found");
             colourControl = cols;
             colourControl.hueVsSat.overrideState = true;
         }
 
         localCurve = new TextureCurve(new AnimationCurve(keyframes), 0f, true, new Vector2(0, 1));
         colourControl.hueVsSat.Override(localCurve);
+
+        if (keyframeInput.Length != 3)
+        {
+            Debug.LogError("Not all keyframes set. Break inevitable.");
+        }
+    }
+
+    public Color GetColorAtKeyframe(int keyframe)
+    {
+        float h = keyframes[keyframe].time;
+        float s = keyframes[keyframe].value;
+        return Color.HSVToRGB(h, s, 1.0f);
+    }
+
+    private void LateUpdate()
+    {
+        UpdateKeyframe(0, GameController.Instance.GetColourBrightness(0));
+        UpdateKeyframe(1, GameController.Instance.GetColourBrightness(1));
+        UpdateKeyframe(2, GameController.Instance.GetColourBrightness(2));
     }
 
     public void UpdateKeyframe(int index, float newValue)
