@@ -10,6 +10,18 @@ public class GeneratedHallway : GeneratedArea
     public GameObject wallSW;
     public GameObject wallNW;
 
+    public GameObject trap;
+
+    public Sprite YellowTrapH;
+    public Sprite YellowTrapV;
+
+    public Sprite CyanTrapH;
+    public Sprite CyanTrapV;
+
+    public Sprite MagentaTrapH;
+    public Sprite MagentaTrapV;
+
+
     public override void SetWallConfig(DungeonGenerator.RoomType type, bool east, bool north, bool west, bool south)
     {
         wallEastEnabled = east;
@@ -51,7 +63,82 @@ public class GeneratedHallway : GeneratedArea
             wallSouth.SetActive(!wallSouthEnabled);
         }
 
-
         wallConfigApplied = true;
+
+        if (trapType > 0)
+        {
+            Debug.Log("Trap  " + transform.position.x / 8 + "  " + transform.position.y / 8);
+
+            trap.SetActive(true);
+            if (trapFacing == 0)
+            {
+                trap.transform.localPosition = new Vector3(0.04f, 1.97f, 0f);
+                trap.transform.localScale = new Vector3(1, -1, 1);
+
+                if (trapColour == 0)
+                {
+                    spriteRenderer.sprite = YellowTrapV;
+                } else if (trapColour == 1)
+                {
+                    spriteRenderer.sprite = CyanTrapV;
+                } else
+                {
+                    spriteRenderer.sprite = MagentaTrapV;
+                }
+
+            }
+            else if (trapFacing == 1)
+            {
+                trap.transform.localPosition = new Vector3(0, -2, 0);
+                if (trapColour == 0)
+                {
+                    spriteRenderer.sprite = YellowTrapV;
+                }
+                else if (trapColour == 1)
+                {
+                    spriteRenderer.sprite = CyanTrapV;
+                }
+                else
+                {
+                    spriteRenderer.sprite = MagentaTrapV;
+                }
+            }
+            else if (trapFacing == 2)
+            {
+                trap.transform.localPosition = new Vector3(-2, 0, 0);
+                if (trapColour == 0)
+                {
+                    spriteRenderer.sprite = YellowTrapH;
+                }
+                else if (trapColour == 1)
+                {
+                    spriteRenderer.sprite = CyanTrapH;
+                }
+                else
+                {
+                    spriteRenderer.sprite = MagentaTrapH;
+                }
+            }
+            else if (trapFacing == 3)
+            {
+                trap.transform.localPosition = new Vector3(2.12f, 0, 0);
+                trap.transform.rotation = new Quaternion(0, 0, 180, 0);
+
+                if (trapColour == 0)
+                {
+                    spriteRenderer.sprite = YellowTrapH;
+                }
+                else if (trapColour == 1)
+                {
+                    spriteRenderer.sprite = CyanTrapH;
+                }
+                else
+                {
+                    spriteRenderer.sprite = MagentaTrapH;
+                }
+            }
+
+        }
+        
     }
 }
