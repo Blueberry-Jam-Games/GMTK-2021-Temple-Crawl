@@ -25,7 +25,6 @@ public class AudioManager : MonoBehaviour
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
             s.source.spatialBlend = s.spatialize;
             s.source.playOnAwake = false;
         }
@@ -40,14 +39,34 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            if(!s.source.isPlaying && s.loop)
+            Debug.Log("Playing sound " + name);
+            if(s.loop)
             {
-                s.source.Play();
-            } else if (!s.loop)
+                if(s.source.isPlaying)
+                {
+                    Debug.Log("Did not play sound " + name + " because the source is already playing");
+                }
+                else
+                {
+                    Debug.Log("Starting loop " + name);
+                    s.source.Play();
+                }
+            }
+            else
             {
+                Debug.Log("Unconditional play once " + name);
                 s.source.Play();
             }
-            
+        }
+    }
+
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Debug.Log("Stopping sound " + name);
+        if (s.source.isPlaying)
+        {
+            s.source.Stop();
         }
     }
 }
@@ -59,8 +78,6 @@ public class Sound
     public string name;
     [Range(0f, 1f)]
     public float volume;
-    [Range(0.1f, 3f)]
-    public float pitch;
     [HideInInspector]
     public AudioSource source;
     [Range(0f, 1f)]

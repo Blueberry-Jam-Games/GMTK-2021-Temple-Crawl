@@ -252,7 +252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1e576862929593244940d52d0a9a11a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea17fc1da326fde45a0c842781ff30a9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -449,11 +449,11 @@ MonoBehaviour:
   - {fileID: 2078954285}
   - {fileID: 483627664}
   - {fileID: 1858668837}
-  heartFull: {fileID: 21300000, guid: 1e576862929593244940d52d0a9a11a6, type: 3}
-  heart34: {fileID: 21300000, guid: 357a4e2d6ab46f543bb228d223696b6d, type: 3}
-  heart12: {fileID: 21300000, guid: d6c8a3e9920fca244b14f1ba75ae1842, type: 3}
-  heart14: {fileID: 21300000, guid: 1b9e74019166df540ba8f0517506dfc4, type: 3}
-  heart0: {fileID: 21300000, guid: 88f088cbe38aec04d8e633c84d4ff3e0, type: 3}
+  heartFull: {fileID: 21300000, guid: ea17fc1da326fde45a0c842781ff30a9, type: 3}
+  heart34: {fileID: 21300000, guid: 2bf9a5983d95473489869ff4e2e5af4e, type: 3}
+  heart12: {fileID: 21300000, guid: a1049c8317867ba48888e52289220740, type: 3}
+  heart14: {fileID: 21300000, guid: a42cdd181eca7794b9bf733dffac77d9, type: 3}
+  heart0: {fileID: 21300000, guid: d6f752683825da44684f704cded7e670, type: 3}
 --- !u!114 &1107990266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1182,7 +1182,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1e576862929593244940d52d0a9a11a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea17fc1da326fde45a0c842781ff30a9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1e576862929593244940d52d0a9a11a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea17fc1da326fde45a0c842781ff30a9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1426,8 +1426,44 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4081375925776110803, guid: 0f9b1cd772036884297a1ed91d6c21bc, type: 3}
+      propertyPath: sounds.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081375925776110803, guid: 0f9b1cd772036884297a1ed91d6c21bc, type: 3}
+      propertyPath: sounds.Array.data[0].name
+      value: BackgroundOpening
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081375925776110803, guid: 0f9b1cd772036884297a1ed91d6c21bc, type: 3}
+      propertyPath: sounds.Array.data[1].name
+      value: BackgroundLoop
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081375925776110803, guid: 0f9b1cd772036884297a1ed91d6c21bc, type: 3}
       propertyPath: sounds.Array.data[7].loop
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081375925776110803, guid: 0f9b1cd772036884297a1ed91d6c21bc, type: 3}
+      propertyPath: sounds.Array.data[8].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081375925776110803, guid: 0f9b1cd772036884297a1ed91d6c21bc, type: 3}
+      propertyPath: sounds.Array.data[10].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a37211c4dcfa34f4cb8d74526befd8d3, type: 3}
+    - target: {fileID: 4081375925776110803, guid: 0f9b1cd772036884297a1ed91d6c21bc, type: 3}
+      propertyPath: sounds.Array.data[10].name
+      value: SnakeMoving
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081375925776110803, guid: 0f9b1cd772036884297a1ed91d6c21bc, type: 3}
+      propertyPath: sounds.Array.data[7].pitch
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081375925776110803, guid: 0f9b1cd772036884297a1ed91d6c21bc, type: 3}
+      propertyPath: sounds.Array.data[8].pitch
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081375925776110803, guid: 0f9b1cd772036884297a1ed91d6c21bc, type: 3}
+      propertyPath: sounds.Array.data[10].volume
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f9b1cd772036884297a1ed91d6c21bc, type: 3}

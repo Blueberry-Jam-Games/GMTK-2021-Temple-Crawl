@@ -29,6 +29,8 @@ public class CharacterMovement : MonoBehaviour
 
     private int health = 12;
 
+    private AudioManager soundPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class CharacterMovement : MonoBehaviour
         charRigidbody = GetComponent<Rigidbody2D>();
         newLocationStore = new Vector2();
         playerAnimator = GetComponent<Animator>();
+        soundPlayer = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -135,11 +138,13 @@ public class CharacterMovement : MonoBehaviour
             if(moveX != 0 || moveY != 0)
             {
                 UpdateAnimationState(moveAnim);
-                FindObjectOfType<AudioManager>().Play("Walking");
+                // Start walk hook
+                soundPlayer.Play("Walking");
             }
             else
             {
                 UpdateAnimationState(idleAnim);
+                soundPlayer.Stop("Walking");
             }
             charRigidbody.velocity = newLocationStore;
             transform.rotation = Quaternion.Euler(0f, 0f, newRotation);
@@ -178,6 +183,7 @@ public class CharacterMovement : MonoBehaviour
             health += hd.healAmount;
             if (health > 12) health = 12;
             GameController.Instance.NotifyHudOfHealthChange(health);
+            soundPlayer.Play("HeartPickup");
         }
     }
 
