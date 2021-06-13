@@ -103,10 +103,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   crystalColours:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 1, b: 0.054581404, a: 1}
-  - {r: 0, g: 0.16104317, b: 1, a: 1}
-  winColor: {r: 1, g: 1, b: 1, a: 1}
+  - {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  - {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  - {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  winColor: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
 --- !u!61 &7978736220000191446
 BoxCollider2D:
   m_ObjectHideFlags: 0
