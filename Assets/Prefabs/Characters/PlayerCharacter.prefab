@@ -355,7 +355,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 986cba7c9ca44424d984b99fa0e67292, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a2eaee5bb9fe68d4fb01964403e473b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -378,6 +378,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0f2326c991bea41ad1b71b74368ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EndScreen: {fileID: 0}
+  transition: {fileID: 0}
   speedmultiplier: 3
   playerLight: {fileID: 1397580019365707538}
   claimedCrystals: 000000

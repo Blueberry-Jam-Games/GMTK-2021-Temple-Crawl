@@ -11,6 +11,7 @@ public class CharacterMovement : MonoBehaviour
 
     private readonly string attackAnim = "PlayerAttack";
     private readonly string idleAnim = "Player_Idle";
+    private readonly string moveAnim = "PlayerWalk";
 
     private Rigidbody2D charRigidbody;
 
@@ -24,12 +25,14 @@ public class CharacterMovement : MonoBehaviour
 
     private Animator playerAnimator;
     private bool isAttackingNow = false;
+    private string currentAnimation;
 
     private int health = 12;
 
     // Start is called before the first frame update
     void Start()
     {
+        currentAnimation = idleAnim;
         charRigidbody = GetComponent<Rigidbody2D>();
         newLocationStore = new Vector2();
         playerAnimator = GetComponent<Animator>();
@@ -41,11 +44,12 @@ public class CharacterMovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                if (!isAttackingNow)
+                if (!currentAnimation.Equals(attackAnim))
                 {
                     Debug.Log("Playing attack");
                     playerAnimator.Play(attackAnim);
                     isAttackingNow = true;
+                    UpdateAnimationState(attackAnim);
                     StartCoroutine(FreeAttackLater());
                 }
             }
@@ -64,7 +68,25 @@ public class CharacterMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(12f / 30f);
         isAttackingNow = false;
+        UpdateAnimationState(idleAnim);
         playerAnimator.Play(idleAnim);
+    }
+
+    private void UpdateAnimationState(string newstate)
+    {
+        if (!currentAnimation.Equals(newstate))
+        {
+            if(isAttackingNow)
+            {
+                //pass
+            }
+            else
+            {
+                playerAnimator.StopPlayback();
+                playerAnimator.Play(newstate);
+                currentAnimation = newstate;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -110,6 +132,14 @@ public class CharacterMovement : MonoBehaviour
             }
             newLocationStore.x = moveX;
             newLocationStore.y = moveY;
+            if(moveX != 0 || moveY != 0)
+            {
+                UpdateAnimationState(moveAnim);
+            }
+            else
+            {
+                UpdateAnimationState(idleAnim);
+            }
             charRigidbody.velocity = newLocationStore;
             transform.rotation = Quaternion.Euler(0f, 0f, newRotation);
         }
@@ -126,7 +156,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag.Equals("Crystal"))
+        if(other.CompareTag("Crystal"))
         {
             GameCrystal crystalComponent = other.gameObject.GetComponent<GameCrystal>();
             if(crystalComponent.type == CrystalType.C_WIN)
@@ -140,6 +170,13 @@ public class CharacterMovement : MonoBehaviour
             { 
                 claimedCrystals[crystalComponent.GetNumber()] = true;
             }
+        }
+        else if(other.CompareTag("HealthDrop"))
+        {
+            HealthDrop hd = other.gameObject.GetComponent<HealthDrop>();
+            health += hd.healAmount;
+            if (health > 12) health = 12;
+            GameController.Instance.NotifyHudOfHealthChange(health);
         }
     }
 
