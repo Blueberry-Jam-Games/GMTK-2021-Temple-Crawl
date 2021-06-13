@@ -55,7 +55,7 @@ public class EnemyCommon : MonoBehaviour
                 //Always face the player
                 FacePlayer(GameController.Instance.GetPlayerPosition());
                 transform.rotation = Quaternion.Euler(0f, 0f, angle);
-                Debug.Log("Active targeting enabled, facing player with angle " + angle);
+                //Debug.Log("Active targeting enabled, facing player with angle " + angle);
                 //Check for walls
                 ownedCollider.enabled = false;
                 RaycastHit2D rc2d = Physics2D.Raycast(PosAsVec2(transform.position), PosAsVec2(-transform.up), 5f);
@@ -63,14 +63,14 @@ public class EnemyCommon : MonoBehaviour
                 //If we see the player and are close enough to attack then attack
                 if(animationMode != STRIKE)
                 {
-                    Debug.Log("Not currently attacking");
+                    //Debug.Log("Not currently attacking");
                     if (rc2d.collider != null)
                     {
-                        Debug.Log("Did collide with something");
+                        //Debug.Log("Did collide with something");
                         if (rc2d.collider.CompareTag("Player") || rc2d.collider.CompareTag("PlayerSword"))
                         {
                             Debug.Log("Hit player with distance " + rc2d.distance);
-                            if (rc2d.distance < 1.0f)
+                            if (rc2d.distance < 0.6f)
                             {
                                 Attack();
                             }
@@ -84,7 +84,7 @@ public class EnemyCommon : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("Hit not player with tag " + rc2d.collider.tag + " distance "+ rc2d.distance);
+                            //Debug.Log("Hit not player with tag " + rc2d.collider.tag + " distance "+ rc2d.distance);
                             if(rc2d.distance > 1.0f)
                             {
                                 rb2d.MovePosition(PosAsVec2(transform.position + (-transform.up * fastMovementSpeed)));
@@ -121,7 +121,7 @@ public class EnemyCommon : MonoBehaviour
                         //If we hit something
                         if (rc2d.collider != null)
                         {
-                            Debug.Log("Hit something with tag " + rc2d.collider.tag + " at distance " + rc2d.distance + " with angle " + angle);
+                            //Debug.Log("Hit something with tag " + rc2d.collider.tag + " at distance " + rc2d.distance + " with angle " + angle);
                             if(rc2d.distance > 1f)
                             {
                                 distanceToMove = Random.Range(1f, rc2d.distance);
@@ -134,7 +134,7 @@ public class EnemyCommon : MonoBehaviour
                                 angle -= 45;
                                 if(angle < -360)
                                 {
-                                    Debug.LogWarning("This snake is completely trapped");
+                                    //Debug.LogWarning("This snake is completely trapped");
                                     activeTargeting = true;
                                     break;
                                 }
@@ -154,6 +154,7 @@ public class EnemyCommon : MonoBehaviour
                     //Check for walls apparently
                     ownedCollider.enabled = false;
                     RaycastHit2D rc2d = Physics2D.Raycast(PosAsVec2(transform.position), PosAsVec2(-transform.up), 5f);
+                    ownedCollider.enabled = true;
                     if (rc2d.collider != null && rc2d.distance <= 0.75f)
                     {
                         distanceToMove = 0;
@@ -264,5 +265,12 @@ public class EnemyCommon : MonoBehaviour
             Destroy(this.gameObject);
         }
         activeTargeting = true;
+        ApplyKnockback(damage);
+    }
+
+    private void ApplyKnockback(int damage)
+    {
+        Debug.Log("Snake hit applying knockback");
+        rb2d.AddForce(transform.up * (damage / 50f));
     }
 }

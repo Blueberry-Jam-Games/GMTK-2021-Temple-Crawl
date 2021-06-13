@@ -184,5 +184,6 @@ public class CharacterMovement : MonoBehaviour
     {
         health -= damage;
         GameController.Instance.NotifyHudOfHealthChange(health);
+        charRigidbody.AddForce(-transform.up * (damage / 50f));
     }
 }
