@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1131606066457755712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3386105790079695688}
+  - component: {fileID: 4081375925776110803}
+  m_Layer: 0
+  m_Name: AudioHandler
+  m_TagString: AudioManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3386105790079695688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131606066457755712}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4081375925776110803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131606066457755712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47fed87f2cdb6594798f7f00f22026b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 8300000, guid: 26df9ed7cab0f2548932ed5a518bb93d, type: 3}
+    name: BackgrounLoop
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+    spatialize: 0
+  - clip: {fileID: 8300000, guid: 429e5dcfcc9e18a49bbc51eea8494a7c, type: 3}
+    name: BackgrounOpening
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+    spatialize: 0
+  - clip: {fileID: 8300000, guid: 0951a9731ad0c8d478d12e3756a65739, type: 3}
+    name: Crystal
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+    spatialize: 0
+  - clip: {fileID: 8300000, guid: 60595b1843b401c428b003681db5f957, type: 3}
+    name: HeartPickup
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+    spatialize: 0
+  - clip: {fileID: 8300000, guid: 400964f5b16498d47b9e5c384768b34f, type: 3}
+    name: PlayerHit
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+    spatialize: 0
+  - clip: {fileID: 8300000, guid: a366c1102ef42df43a6aded27827f87d, type: 3}
+    name: SnakeHit
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+    spatialize: 0
+  - clip: {fileID: 8300000, guid: b6e2d03890500eb4b83be19caf10fe19, type: 3}
+    name: WallHit
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+    spatialize: 0
+  - clip: {fileID: 8300000, guid: fdc08a20f775ea44c88276c6376a2a15, type: 3}
+    name: Walking
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+    spatialize: 0
+  - clip: {fileID: 8300000, guid: fad55a20b13fb1342a0832d6c3b34ee0, type: 3}
+    name: SnakeDeath
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+    spatialize: 0
+  - clip: {fileID: 8300000, guid: b91575dbe9a50fe4a9cc2978499dba44, type: 3}
+    name: RockSlide
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+    spatialize: 0
