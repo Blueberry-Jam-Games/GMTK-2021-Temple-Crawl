@@ -11,10 +11,17 @@ public class EnemyCommon : MonoBehaviour
 
     protected Animator animator;
     protected Rigidbody2D rb2d;
+    Collider2D ownedCollider;
+
     private bool isAttacking = false;
 
     private const string attackAnim = "SnakeAttack";
     private const string idleAnim = "SnakeIdle";
+
+    public float slowMovementSpeed = 0.03f;
+    public float fastMovementSpeed = 0.05f;
+
+    public GameObject healthDropPrefab;
 
     private int angle = 0;
 
@@ -24,20 +31,69 @@ public class EnemyCommon : MonoBehaviour
         health = maxHealth;
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
+        ownedCollider = GetComponent<Collider2D>();
     }
 
     public bool activeTargeting = false;
     public float distanceToMove = 0f;
+    public Vector3 movementStartedAt;
 
     // Update is called once per frame
     void Update()
     {
-        //Stops ais outside of loaded areas
+        //Stops ai's outside of loaded areas
         if(GameController.Instance.DistanceFromPlayer(transform.position) < 10)
         {
             if (activeTargeting)
             {
-
+                //Always face the player
+                FacePlayer(GameController.Instance.GetPlayerPosition());
+                transform.rotation = Quaternion.Euler(0f, 0f, angle);
+                Debug.Log("Active targeting enabled, facing player with angle " + angle);
+                //Check for walls
+                ownedCollider.enabled = false;
+                RaycastHit2D rc2d = Physics2D.Raycast(PosAsVec2(transform.position), PosAsVec2(-transform.up), 5f);
+                ownedCollider.enabled = true;
+                //If we see the player and are close enough to attack then attack
+                if(!isAttacking)
+                {
+                    Debug.Log("Not currently attacking");
+                    if (rc2d.collider != null)
+                    {
+                        Debug.Log("Did collide with something");
+                        if (rc2d.collider.CompareTag("Player") || rc2d.collider.CompareTag("PlayerSword"))
+                        {
+                            Debug.Log("Hit player with distance " + rc2d.distance);
+                            if (rc2d.distance < 1.0f)
+                            {
+                                Attack();
+                            }
+                            else
+                            {
+                                //Otherwise if there is enough distance to move always move forwards
+                                //Move towards player
+                                rb2d.MovePosition(PosAsVec2(transform.position + (-transform.up * fastMovementSpeed)));
+                            }
+                        }
+                        else
+                        {
+                            Debug.Log("Hit not player with tag " + rc2d.collider.tag + " distance "+ rc2d.distance);
+                            if(rc2d.distance > 1.0f)
+                            {
+                                rb2d.MovePosition(PosAsVec2(transform.position + (-transform.up * fastMovementSpeed)));
+                            }
+                            else if(rc2d.collider.CompareTag("Untagged"))
+                            {
+                                //Otherwise break off pursuit
+                                activeTargeting = false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        rb2d.MovePosition(PosAsVec2(transform.position + (-transform.up * fastMovementSpeed)));
+                    }
+                }
             }
             else
             {
@@ -48,6 +104,7 @@ public class EnemyCommon : MonoBehaviour
                     bool acceptableAngle = false;
                     //Pick a new, wall free rotation
                     angle = Random.Range(0, 7) * -45;
+                    ownedCollider.enabled = false;
                     do
                     {
                         transform.rotation = Quaternion.Euler(0f, 0f, angle);
@@ -56,9 +113,10 @@ public class EnemyCommon : MonoBehaviour
                         if (rc2d.collider != null)
                         {
                             Debug.Log("Hit something with tag " + rc2d.collider.tag + " at distance " + rc2d.distance + " with angle " + angle);
-                            if(rc2d.distance > 0.5f)
+                            if(rc2d.distance > 1f)
                             {
                                 distanceToMove = Random.Range(1f, rc2d.distance);
+                                movementStartedAt = transform.position;
                                 acceptableAngle = true;
                             }
                             else
@@ -77,15 +135,29 @@ public class EnemyCommon : MonoBehaviour
                         {
                             acceptableAngle = true;
                             distanceToMove = Random.Range(1f, 5f);
+                            movementStartedAt = transform.position;
                         }
                     } while (!acceptableAngle);
+                    ownedCollider.enabled = true;
                 }
                 if(!activeTargeting)
                 {
+                    //Check for walls apparently
+                    ownedCollider.enabled = false;
+                    RaycastHit2D rc2d = Physics2D.Raycast(PosAsVec2(transform.position), PosAsVec2(-transform.up), 5f);
+                    if (rc2d.collider != null && rc2d.distance <= 0.75f)
+                    {
+                        distanceToMove = 0;
+                    }
+                    else
+                    {
+                        rb2d.MovePosition(PosAsVec2(transform.position + (-transform.up * slowMovementSpeed)));
+                    }
                     //Once we know an angle
-                    Vector3 start = transform.position;
-                    rb2d.MovePosition(PosAsVec2(transform.position + (-transform.up * 0.05f)));
-                    distanceToMove -= Vector3.Distance(start, transform.position);
+                    if (Vector3.Distance(movementStartedAt, transform.position) > distanceToMove)
+                    {
+                        distanceToMove = 0;
+                    }
                 }
             }
         }
@@ -106,35 +178,35 @@ public class EnemyCommon : MonoBehaviour
 
         if(facingY > 0 && facingX == 0)
         {
-            angle = 0;
+            angle = 0 - 180;
         }
         else if(facingY > 0 && facingX > 0)
         {
-            angle = -45;
+            angle = -45 - 180;
         }
         else if(facingY == 0 && facingX > 0)
         {
-            angle = -90;
+            angle = -90 - 180;
         }
         else if(facingY < 0 && facingX > 0)
         {
-            angle = -135;
+            angle = -135 - 180;
         }
         else if(facingY < 0 && facingX == 0)
         {
-            angle = -180;
+            angle = -180 - 180;
         }
         else if(facingY < 0 && facingX < 0)
         {
-            angle = -225;
+            angle = -225 - 180;
         }
         else if(facingY == 0 && facingX < 0)
         {
-            angle = -270;
+            angle = -270 - 180;
         }
         else if(facingY > 0 && facingX < 0)
         {
-            angle = -315;
+            angle = -315 - 180;
         }
         //else angle stays the same which is allowed
     }
@@ -164,7 +236,14 @@ public class EnemyCommon : MonoBehaviour
         health -= damage;
         if(health <= 0)
         {
+            //Try spawn health drop
+            if(Random.Range(0, 100) > 75) // 25% chance to spawn
+            {
+                GameObject healthDrop = GameObject.Instantiate(healthDropPrefab);
+                healthDrop.transform.position = transform.position;
+            }
             Destroy(this.gameObject);
         }
+        activeTargeting = true;
     }
 }

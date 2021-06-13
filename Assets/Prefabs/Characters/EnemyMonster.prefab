@@ -133,10 +133,13 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   colourAffiliation: 0
-  countdownToAttack: 300
+  slowMovementSpeed: 0.03
+  fastMovementSpeed: 0.05
+  healthDropPrefab: {fileID: 6614005057137790536, guid: 8029831892f862040bf1410e6929c5c1, type: 3}
   activeTargeting: 0
-  timeMoving: 100
-  shouldUpdateRotation: 1
+  distanceToMove: 0
+  movementStartedAt: {x: 0, y: 0, z: 0}
+  testkill: 0
 --- !u!70 &6954448157310237306
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -188,11 +191,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 1
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: bfb3f2a8e75102c4fb688ca96eab85bc, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &6954448158140261956
 GameObject:
   m_ObjectHideFlags: 0
