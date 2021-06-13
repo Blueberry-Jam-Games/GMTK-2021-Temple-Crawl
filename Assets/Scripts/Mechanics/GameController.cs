@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     //Player
     protected CharacterMovement player;
     //List<Crystal> crystals
-    protected GameCrystal[] crystals;
+    public GameCrystal[] crystals;
     //Win crystal
     protected GameCrystal winCrystal;
     //Camera
