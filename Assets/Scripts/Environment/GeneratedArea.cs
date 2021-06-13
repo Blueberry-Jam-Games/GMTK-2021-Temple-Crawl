@@ -18,6 +18,7 @@ public abstract class GeneratedArea : MonoBehaviour
     protected bool wallSouthEnabled = false;
 
     protected DungeonGenerator.RoomType type;
+    public bool monster = false;
 
     public virtual void SetWallConfig(DungeonGenerator.RoomType type, bool east, bool north, bool west, bool south)
     {
@@ -27,6 +28,11 @@ public abstract class GeneratedArea : MonoBehaviour
         wallSouthEnabled = south;
         wallConfigSet = true;
         this.type = type;
+    }
+
+    public virtual void HasMonstor()
+    {
+        monster = true;
     }
 
     protected virtual void ApplyWallConfig()

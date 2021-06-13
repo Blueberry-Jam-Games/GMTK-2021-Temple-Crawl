@@ -5,6 +5,7 @@ using UnityEngine;
 public class GeneratedRoom : GeneratedArea
 {
     public GameObject crystalPrefabRef;
+    public GameObject monsterPrefabRef;
 
     protected override void Start()
     {
@@ -32,6 +33,14 @@ public class GeneratedRoom : GeneratedArea
         {
             GameObject player = GameObject.FindWithTag("Player");
             player.transform.position = new Vector3(transform.position.x, transform.position.y);
+        }
+
+        if(monster == true)
+        {
+            float randXOffset = Random.Range(0.5f, 5.5f) - 3;
+            float randYOffset = Random.Range(0.5f, 5.5f) - 3;
+            GameObject monster = GameObject.Instantiate(monsterPrefabRef);
+            monster.transform.position = new Vector3(transform.position.x + randXOffset, transform.position.y + randYOffset);
         }
     }
 }

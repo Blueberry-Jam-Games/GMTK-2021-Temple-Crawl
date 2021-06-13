@@ -25,6 +25,9 @@ public class DungeonGenerator : MonoBehaviour
     public int minExtraRooms = 5;
     public int maxExtraRooms = 10;
 
+    public int monsterRoomPercent = 70;
+    public int monsterHallPercent = 1;
+
     private int startingRoomX;
     private int startingRoomY;
 
@@ -356,7 +359,19 @@ public class DungeonGenerator : MonoBehaviour
         {
             for (int checkY = 0; checkY < gameplayHeight; checkY++)
             {
-
+                if(world[checkX, checkY].type == RoomType.ROOM)
+                {
+                    if(Random.Range(0, 100) < monsterRoomPercent)
+                    {
+                        world[checkX, checkY].monstor = true;
+                    }
+                } else if(world[checkX, checkY].type == RoomType.HALLWAY)
+                {
+                    if (Random.Range(0, 100) < monsterHallPercent)
+                    {
+                        world[checkX, checkY].monstor = true;
+                    }
+                }
 
             }
         }
@@ -404,6 +419,7 @@ public class DungeonGenerator : MonoBehaviour
                 GeneratedArea area = creating.GetComponent<GeneratedArea>();
                 PreGenArea pga = world[x, y];
                 area.SetWallConfig(pga.type, pga.connectedRight, pga.connectedUp, pga.connectedLeft, pga.connectedDown);
+                area.monster = world[x, y].monstor;
                 visabilityCuller.rooms[x, y] = area;
             }
         }
@@ -504,6 +520,7 @@ public class DungeonGenerator : MonoBehaviour
         public bool connectedLeft;
         public bool connectedRight;
         public bool accessable;
+        public bool monstor;
     }
 
     public enum RoomType
