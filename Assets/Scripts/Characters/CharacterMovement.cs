@@ -62,7 +62,7 @@ public class CharacterMovement : MonoBehaviour
             if (Input.anyKeyDown)
             {
                 transition.reloadLevel();
-                EndScreen.LevelEnd(false);
+                EndScreen.LevelEnd(false, true);
                 GameController.Instance.endScreen = false;
             }
         }
@@ -171,7 +171,7 @@ public class CharacterMovement : MonoBehaviour
                 //Win level
                 Debug.Log("Win Win Win!!!");
                 GameController.Instance.endScreen = true;
-                EndScreen.LevelEnd(true);
+                EndScreen.LevelEnd(true, true);
             }
             else
             { 
@@ -201,6 +201,8 @@ public class CharacterMovement : MonoBehaviour
             if (health <= 0)
             {
                 //Game Over access point
+                GameController.Instance.endScreen = true;
+                EndScreen.LevelEnd(true, false);
                 soundPlayer.Stop("PlayerHit");
                 BackgroundMusicHandler bgm = GameObject.FindWithTag("BGMHandler").GetComponent<BackgroundMusicHandler>();
                 bgm.StopMusic();

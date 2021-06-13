@@ -46,6 +46,11 @@ public class TrapFunctional : MonoBehaviour
             {
                 rockfallSound.Play();
                 rockwallComponent.SetActive(true);
+                if(trapOrientation < 2)
+                {
+                    rockwallComponent.transform.rotation = new Quaternion(0, 0, 90, 0);
+                }
+
                 trapState = 2;
             }
         }

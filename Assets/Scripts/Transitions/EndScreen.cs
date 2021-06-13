@@ -12,6 +12,7 @@ public class EndScreen : MonoBehaviour
     public Image Cyan;
     public Image Magenta;
     public Image Yellow;
+    public Image Win;
 
     public Sprite gsCyan;
     public Sprite gsMagenta;
@@ -27,38 +28,54 @@ public class EndScreen : MonoBehaviour
 
     }
 
-    public void LevelEnd(bool fadeIn)
+    public void LevelEnd(bool fadeIn, bool winCondition)
     {
-        StartCoroutine(Fade(fadeIn));
+        StartCoroutine(Fade(fadeIn, winCondition));
     }
 
-    IEnumerator Fade(bool fadeIn)
+    IEnumerator Fade(bool fadeIn, bool winCondition)
     {
-        if (!GameController.Instance.crystals[1])
-        {
-            Cyan.sprite = sCyan;
+        if (winCondition)
+            {
+            Cyan.gameObject.SetActive(true);
+            Magenta.gameObject.SetActive(true);
+            Yellow.gameObject.SetActive(true);
+            Win.gameObject.SetActive(true);
+
+            if (!GameController.Instance.crystals[1])
+            {
+                Cyan.sprite = sCyan;
+            }
+            else
+            {
+                Cyan.sprite = gsCyan;
+            }
+
+            if (!GameController.Instance.crystals[0])
+            {
+                Yellow.sprite = sYellow;
+            }
+            else
+            {
+                Yellow.sprite = gsYellow;
+            }
+
+            if (!GameController.Instance.crystals[2])
+            {
+                Magenta.sprite = sMagenta;
+            }
+            else
+            {
+                Magenta.sprite = gsMagenta;
+            }
         } else
         {
-            Cyan.sprite = gsCyan;
+            Cyan.gameObject.SetActive(false);
+            Magenta.gameObject.SetActive(false);
+            Yellow.gameObject.SetActive(false);
+            Win.gameObject.SetActive(false);
         }
-
-        if (!GameController.Instance.crystals[0])
-        {
-            Yellow.sprite = sYellow;
-        }
-        else
-        {
-            Yellow.sprite = gsYellow;
-        }
-
-        if (!GameController.Instance.crystals[2])
-        {
-            Magenta.sprite = sMagenta;
-        }
-        else
-        {
-            Magenta.sprite = gsMagenta;
-        }
+        
 
         if (fadeIn)
         {
