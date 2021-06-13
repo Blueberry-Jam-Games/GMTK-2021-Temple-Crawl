@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
 
     private bool destroyTag = false; //If this is true an instance already exists
 
+    public bool endScreen = false;
+
     //Player
     protected CharacterMovement player;
     //List<Crystal> crystals
