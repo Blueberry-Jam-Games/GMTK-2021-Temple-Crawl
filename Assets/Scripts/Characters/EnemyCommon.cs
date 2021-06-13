@@ -33,6 +33,7 @@ public class EnemyCommon : MonoBehaviour
 
     public AudioSource snakeMove;
     public AudioSource snakeHit;
+    public AudioSource snakeAttack;
     private AudioManager soundPlayer;
 
     // Start is called before the first frame update
@@ -237,6 +238,7 @@ public class EnemyCommon : MonoBehaviour
         if (animationMode != STRIKE)
         {
             UpdateAnimationMode(STRIKE);
+            snakeAttack.Play();
             StartCoroutine(FreeAttackLater());
         }
     }
