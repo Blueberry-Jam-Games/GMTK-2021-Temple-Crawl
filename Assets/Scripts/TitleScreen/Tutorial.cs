@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
+    public LevelLoader ll;
 
     public Image show;
     public Text dialogue;
@@ -28,6 +29,7 @@ public class Tutorial : MonoBehaviour
         if(currentStep >= steps.Length)
         {
             //Go to gameplay
+            ll.RequestLoadLevel(2);
         }
         else
         {

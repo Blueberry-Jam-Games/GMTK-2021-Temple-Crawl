@@ -9,15 +9,9 @@ public class LevelLoader : MonoBehaviour
     public Animator transition;
     public float transitionTime;
 
-    // Update is called once per frame
-    void Update()
+    public void RequestLoadLevel(int index)
     {
-        /*
-        if (Input.GetKeyDown("space"))
-        {
-            reloadLevel();
-        } 
-        */
+        StartCoroutine(LoadLevel(index));
     }
 
     public void reloadLevel()

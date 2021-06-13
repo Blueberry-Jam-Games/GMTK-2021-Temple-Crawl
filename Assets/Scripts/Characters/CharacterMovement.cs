@@ -173,6 +173,9 @@ public class CharacterMovement : MonoBehaviour
             {
                 //Win level
                 Debug.Log("Win Win Win!!!");
+                BackgroundMusicHandler bgm = GameObject.FindWithTag("BGMHandler").GetComponent<BackgroundMusicHandler>();
+                bgm.StopMusic();
+                soundPlayer.Play("Victory");
                 GameController.Instance.endScreen = true;
                 EndScreen.LevelEnd(true, true);
             }
