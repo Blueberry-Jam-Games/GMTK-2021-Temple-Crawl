@@ -13,9 +13,15 @@ public class EnemyCommon : MonoBehaviour
     protected Rigidbody2D rb2d;
     Collider2D ownedCollider;
 
-    private bool isAttacking = false;
+    //private bool isAttacking = false;
+    private const int IDLE = 0;
+    private const int MOVE = 1;
+    private const int STRIKE = 2;
+
+    protected int animationMode = IDLE;
 
     private const string attackAnim = "SnakeAttack";
+    private const string moveAnim = "SnakeMoving";
     private const string idleAnim = "SnakeIdle";
 
     public float slowMovementSpeed = 0.03f;
@@ -55,7 +61,7 @@ public class EnemyCommon : MonoBehaviour
                 RaycastHit2D rc2d = Physics2D.Raycast(PosAsVec2(transform.position), PosAsVec2(-transform.up), 5f);
                 ownedCollider.enabled = true;
                 //If we see the player and are close enough to attack then attack
-                if(!isAttacking)
+                if(animationMode != STRIKE)
                 {
                     Debug.Log("Not currently attacking");
                     if (rc2d.collider != null)
@@ -73,6 +79,7 @@ public class EnemyCommon : MonoBehaviour
                                 //Otherwise if there is enough distance to move always move forwards
                                 //Move towards player
                                 rb2d.MovePosition(PosAsVec2(transform.position + (-transform.up * fastMovementSpeed)));
+                                UpdateAnimationMode(MOVE);
                             }
                         }
                         else
@@ -81,6 +88,7 @@ public class EnemyCommon : MonoBehaviour
                             if(rc2d.distance > 1.0f)
                             {
                                 rb2d.MovePosition(PosAsVec2(transform.position + (-transform.up * fastMovementSpeed)));
+                                UpdateAnimationMode(MOVE);
                             }
                             else if(rc2d.collider.CompareTag("Untagged"))
                             {
@@ -92,6 +100,7 @@ public class EnemyCommon : MonoBehaviour
                     else
                     {
                         rb2d.MovePosition(PosAsVec2(transform.position + (-transform.up * fastMovementSpeed)));
+                        UpdateAnimationMode(MOVE);
                     }
                 }
             }
@@ -152,6 +161,7 @@ public class EnemyCommon : MonoBehaviour
                     else
                     {
                         rb2d.MovePosition(PosAsVec2(transform.position + (-transform.up * slowMovementSpeed)));
+                        UpdateAnimationMode(MOVE);
                     }
                     //Once we know an angle
                     if (Vector3.Distance(movementStartedAt, transform.position) > distanceToMove)
@@ -213,10 +223,9 @@ public class EnemyCommon : MonoBehaviour
 
     private void Attack()
     {
-        if (!isAttacking)
+        if (animationMode != STRIKE)
         {
-            isAttacking = true;
-            animator.Play(attackAnim);
+            UpdateAnimationMode(STRIKE);
             StartCoroutine(FreeAttackLater());
         }
     }
@@ -224,8 +233,18 @@ public class EnemyCommon : MonoBehaviour
     private IEnumerator FreeAttackLater()
     {
         yield return new WaitForSeconds(10f / 30f);
-        isAttacking = false;
-        animator.Play(idleAnim);
+        UpdateAnimationMode(IDLE);
+    }
+
+    public void UpdateAnimationMode(int newMode)
+    {
+        if(animationMode != newMode)
+        {
+            animator.StopPlayback();
+            string animation = newMode == IDLE ? idleAnim : newMode == STRIKE ? attackAnim : moveAnim;
+            animator.Play(animation);
+            animationMode = newMode;
+        }
     }
 
     public void PlayerInflictDamage()
