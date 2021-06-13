@@ -5,9 +5,9 @@ using UnityEngine;
 public class GameCrystal : MonoBehaviour
 {
     public CrystalType type;
-    public List<Color> crystalColours;
+    public List<Sprite> crystalColours;
 
-    public Color winColor;
+    public Sprite winColor;
 
     private SpriteRenderer spriteRender;
 
@@ -30,20 +30,20 @@ public class GameCrystal : MonoBehaviour
         {
             case DungeonGenerator.RoomType.VICTORY:
                 type = CrystalType.C_WIN;
-                spriteRender.color = winColor;
+                spriteRender.sprite = winColor;
                 break;
             case DungeonGenerator.RoomType.CRYSTAL_2:
                 type = CrystalType.C_1;
-                spriteRender.color = crystalColours[1];
+                spriteRender.sprite = crystalColours[1];
                 break;
             case DungeonGenerator.RoomType.CRYSTAL_3:
                 type = CrystalType.C_2;
-                spriteRender.color = crystalColours[2];
+                spriteRender.sprite = crystalColours[2];
                 break;
             case DungeonGenerator.RoomType.CRYSTAL_1:
             default:
                 type = CrystalType.C_0;
-                spriteRender.color = crystalColours[0];
+                spriteRender.sprite = crystalColours[0];
                 break;
         }
     }
