@@ -45,7 +45,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!GameController.Instance.endScreen)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
             {
                 if (!currentAnimation.Equals(attackAnim))
                 {

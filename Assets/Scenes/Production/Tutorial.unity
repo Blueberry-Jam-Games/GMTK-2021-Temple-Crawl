@@ -699,9 +699,11 @@ MonoBehaviour:
   nextBttn: {fileID: 1774899909}
   steps:
   - image: {fileID: 21300000, guid: ba7974d9b0a9d4045aab28010c861036, type: 3}
-    text: Use WASD or the Arrow Keys to Move!
+    text: Use WASD or the Arrow Keys to Move! (Press continue in the bottom right
+      corner to advance the tutorial)
   - image: {fileID: 21300000, guid: 7ea2ba77d24751141a662631b2bc1ecc, type: 3}
-    text: Attack by clicking anywhere!
+    text: Attack by clicking with the mouse or pressing space! This Stabs the monster
+      in front of you!
   - image: {fileID: 21300000, guid: d0a4e9f7c66f827428bf7ec15a487862, type: 3}
     text: Your goal is to find the legendary white crystal in this ancient temple.
       Your light will get brighter the closer you are to your destination!
@@ -717,6 +719,7 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: ba7974d9b0a9d4045aab28010c861036, type: 3}
     text: Good Luck!
   currentStep: 0
+  MIN_TIME_ON_SCREEN: 60
 --- !u!1001 &917266603
 PrefabInstance:
   m_ObjectHideFlags: 0

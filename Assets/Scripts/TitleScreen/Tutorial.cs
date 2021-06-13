@@ -16,6 +16,9 @@ public class Tutorial : MonoBehaviour
 
     public int currentStep = 0;
 
+    public int MIN_TIME_ON_SCREEN = 60;
+    private int TIME_ON_SCREEN = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,17 +26,26 @@ public class Tutorial : MonoBehaviour
         nextBttn.onClick.AddListener(OnContinueButtonClicked);
     }
 
+    private void Update()
+    {
+        TIME_ON_SCREEN++;
+    }
+
     public void OnContinueButtonClicked()
     {
-        currentStep++;
-        if(currentStep >= steps.Length)
+        if(TIME_ON_SCREEN > MIN_TIME_ON_SCREEN)
         {
-            //Go to gameplay
-            ll.RequestLoadLevel(2);
-        }
-        else
-        {
-            ConfigureAtCurrentStep();
+            TIME_ON_SCREEN = 0;
+            currentStep++;
+            if (currentStep >= steps.Length)
+            {
+                //Go to gameplay
+                ll.RequestLoadLevel(2);
+            }
+            else
+            {
+                ConfigureAtCurrentStep();
+            }
         }
     }
 

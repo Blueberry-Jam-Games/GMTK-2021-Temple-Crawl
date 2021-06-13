@@ -55,7 +55,7 @@ public class EnemyCommon : MonoBehaviour
     void Update()
     {
         //Stops ai's outside of loaded areas
-        if(GameController.Instance.DistanceFromPlayer(transform.position) < 10 && health > 0)
+        if(GameController.Instance.DistanceFromPlayer(transform.position) < 8f && health > 0)
         {
             if (activeTargeting)
             {
