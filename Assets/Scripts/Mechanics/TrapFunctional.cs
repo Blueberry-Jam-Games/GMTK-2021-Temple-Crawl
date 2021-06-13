@@ -61,7 +61,7 @@ public class TrapFunctional : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             //Play Effect
-            if (trapType == TrapType.MONSTER && trapState == 0 && false)
+            if (trapType == TrapType.MONSTER && trapState == 0)
             {
                 Vector3 monsterSpawn1;
                 Vector3 monsterSpawn2;
