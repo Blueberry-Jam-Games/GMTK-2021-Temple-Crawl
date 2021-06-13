@@ -59,6 +59,9 @@ public class CharacterMovement : MonoBehaviour
             }
         } else
         {
+            charRigidbody.velocity = new Vector2(0, 0);
+            UpdateAnimationState(idleAnim);
+
             if (Input.anyKeyDown)
             {
                 transition.reloadLevel();
@@ -96,7 +99,7 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!GameController.Instance.endScreen)
+        if (GameController.Instance.endScreen == false)
         {
             float moveX = Input.GetAxis("Horizontal") * speedmultiplier;
             float moveY = Input.GetAxis("Vertical") * speedmultiplier;
