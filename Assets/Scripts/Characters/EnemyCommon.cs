@@ -117,7 +117,7 @@ public class EnemyCommon : MonoBehaviour
                     do
                     {
                         transform.rotation = Quaternion.Euler(0f, 0f, angle);
-                        RaycastHit2D rc2d = Physics2D.Raycast(PosAsVec2(transform.position), PosAsVec2(-transform.up), 5f);
+                        RaycastHit2D rc2d = Physics2D.Raycast(PosAsVec2(transform.position), PosAsVec2(-transform.up), 5f, layerMask: 1 << 2);
                         //If we hit something
                         if (rc2d.collider != null)
                         {

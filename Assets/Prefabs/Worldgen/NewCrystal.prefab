@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   crystalColours:
+  - {fileID: 21300000, guid: ef181d259aa6bca42a34fb3428cd9668, type: 3}
   - {fileID: 21300000, guid: 7cacf637ef133f14aab6548ee063ffa9, type: 3}
   - {fileID: 21300000, guid: ad680108bfb12464ab8e83891252a645, type: 3}
-  - {fileID: 21300000, guid: ef181d259aa6bca42a34fb3428cd9668, type: 3}
   winColor: {fileID: 21300000, guid: fb0eaf84ce17b2245af111c9f7c63a34, type: 3}

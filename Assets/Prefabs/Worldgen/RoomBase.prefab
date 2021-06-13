@@ -135,7 +135,7 @@ MonoBehaviour:
   - {x: -1.2675073, y: 4.0030746, z: 0}
   m_ShapePathHash: 1098799734
   m_Mesh: {fileID: 0}
-  m_InstanceId: 70716
+  m_InstanceId: 21296
 --- !u!1 &2927955503561416169
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
   - {x: -1.2534709, y: -3.638491, z: 0}
   m_ShapePathHash: 1733250043
   m_Mesh: {fileID: 0}
-  m_InstanceId: 70690
+  m_InstanceId: 21270
 --- !u!1 &4385416143688099242
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +438,7 @@ MonoBehaviour:
   - {x: -4, y: 4, z: 0}
   m_ShapePathHash: -946155906
   m_Mesh: {fileID: 0}
-  m_InstanceId: 70728
+  m_InstanceId: 21308
 --- !u!1 &4855997552304610149
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +545,11 @@ MonoBehaviour:
   wallWest: {fileID: 5125136380053023362}
   wallSouth: {fileID: 2927955503561416169}
   monster: 0
-  crystalPrefabRef: {fileID: 1629694716538668941, guid: b0a460767b2089148a8fae79c7d6e9f4, type: 3}
+  trapFacing: 0
+  trapColour: 0
+  trapType: 0
+  spriteRenderer: {fileID: 0}
+  crystalPrefabRef: {fileID: 5676992074494376156, guid: d729c6f7aac4885488758bc3c37ed8d6, type: 3}
   monsterPrefabRef: {fileID: 6954448157310237285, guid: 54c863ecf9bdb9c4ebb563e788258220, type: 3}
 --- !u!114 &1955677345095788212
 MonoBehaviour:
@@ -618,7 +622,7 @@ MonoBehaviour:
   - {x: 1.2428997, y: 4, z: 0}
   m_ShapePathHash: -901893358
   m_Mesh: {fileID: 0}
-  m_InstanceId: 70686
+  m_InstanceId: 21266
 --- !u!1 &5125136380053023362
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,7 +758,7 @@ MonoBehaviour:
   - {x: -3.9969249, y: 1.2613577, z: 0}
   m_ShapePathHash: 1122612466
   m_Mesh: {fileID: 0}
-  m_InstanceId: 70704
+  m_InstanceId: 21284
 --- !u!1 &6179899975500391107
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,7 +925,7 @@ MonoBehaviour:
   - {x: 1.2317345, y: 4, z: 0}
   m_ShapePathHash: -2047468205
   m_Mesh: {fileID: 0}
-  m_InstanceId: 70730
+  m_InstanceId: 21310
 --- !u!1 &8368627012680505926
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,7 +984,7 @@ MonoBehaviour:
   - {x: -4, y: 4, z: 0}
   m_ShapePathHash: 928600128
   m_Mesh: {fileID: 0}
-  m_InstanceId: 70714
+  m_InstanceId: 21294
 --- !u!1 &8937704736507993945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,7 +1120,7 @@ MonoBehaviour:
   - {x: 3.653339, y: 1.2530743, z: 0}
   m_ShapePathHash: -1740459774
   m_Mesh: {fileID: 0}
-  m_InstanceId: 70644
+  m_InstanceId: 21224
 --- !u!1 &9209303080470305496
 GameObject:
   m_ObjectHideFlags: 0

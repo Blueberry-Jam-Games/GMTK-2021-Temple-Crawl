@@ -21,7 +21,6 @@ public class GeneratedHallway : GeneratedArea
     public Sprite MagentaTrapH;
     public Sprite MagentaTrapV;
 
-
     public override void SetWallConfig(DungeonGenerator.RoomType type, bool east, bool north, bool west, bool south)
     {
         wallEastEnabled = east;
@@ -78,14 +77,14 @@ public class GeneratedHallway : GeneratedArea
                 if (trapColour == 0)
                 {
                     spriteRenderer.sprite = YellowTrapV;
-                } else if (trapColour == 1)
+                } 
+                else if (trapColour == 1)
                 {
                     spriteRenderer.sprite = CyanTrapV;
                 } else
                 {
                     spriteRenderer.sprite = MagentaTrapV;
                 }
-
             }
             else if (trapFacing == 1)
             {
@@ -137,7 +136,8 @@ public class GeneratedHallway : GeneratedArea
                     spriteRenderer.sprite = MagentaTrapH;
                 }
             }
-
+            TrapFunctional tf = trap.GetComponent<TrapFunctional>();
+            tf.SetBasicInformation(trapType, trapColour, trapFacing);
         }
         
     }
