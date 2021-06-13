@@ -191,9 +191,21 @@ public class CharacterMovement : MonoBehaviour
 
     public void ReceiveDamageFromEnemy(int damage)
     {
-        health -= damage;
-        GameController.Instance.NotifyHudOfHealthChange(health);
-        charRigidbody.AddForce(-transform.up * (damage / 50f));
-        soundPlayer.Play("PlayerHit");
+        if(health > 0)
+        {
+            health -= damage;
+            GameController.Instance.NotifyHudOfHealthChange(health);
+            charRigidbody.AddForce(-transform.up * (damage / 50f));
+            soundPlayer.Play("PlayerHit");
+
+            if (health <= 0)
+            {
+                //Game Over access point
+                soundPlayer.Stop("PlayerHit");
+                BackgroundMusicHandler bgm = GameObject.FindWithTag("BGMHandler").GetComponent<BackgroundMusicHandler>();
+                bgm.StopMusic();
+                soundPlayer.Play("GameOver");
+            }
+        }
     }
 }
