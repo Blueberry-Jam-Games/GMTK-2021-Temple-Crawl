@@ -9,6 +9,7 @@ TagManager:
   - EnemyAttack
   - EnemyBody
   - HealthManager
+  - HealthDrop
   layers:
   - Default
   - TransparentFX
