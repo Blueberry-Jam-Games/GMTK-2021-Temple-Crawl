@@ -40,7 +40,14 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            s.source.Play();
+            if(!s.source.isPlaying && s.loop)
+            {
+                s.source.Play();
+            } else if (!s.loop)
+            {
+                s.source.Play();
+            }
+            
         }
     }
 }
@@ -58,4 +65,5 @@ public class Sound
     public AudioSource source;
     [Range(0f, 1f)]
     public float spatialize;
+    public bool loop;
 }

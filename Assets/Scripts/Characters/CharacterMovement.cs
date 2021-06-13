@@ -135,6 +135,7 @@ public class CharacterMovement : MonoBehaviour
             if(moveX != 0 || moveY != 0)
             {
                 UpdateAnimationState(moveAnim);
+                FindObjectOfType<AudioManager>().Play("Walking");
             }
             else
             {
