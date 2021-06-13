@@ -430,6 +430,14 @@ PrefabInstance:
       value: WorldGenerator
       objectReference: {fileID: 0}
     - target: {fileID: 8269209302392275239, guid: f82b04db1d7f56d45963c3777394606c, type: 3}
+      propertyPath: maxExtraRooms
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269209302392275239, guid: f82b04db1d7f56d45963c3777394606c, type: 3}
+      propertyPath: minExtraRooms
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269209302392275239, guid: f82b04db1d7f56d45963c3777394606c, type: 3}
       propertyPath: trapHallPercent
       value: 40
       objectReference: {fileID: 0}
@@ -437,6 +445,10 @@ PrefabInstance:
       propertyPath: visabilityCuller
       value: 
       objectReference: {fileID: 979075251}
+    - target: {fileID: 8269209302392275239, guid: f82b04db1d7f56d45963c3777394606c, type: 3}
+      propertyPath: percentRemoveConnection
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f82b04db1d7f56d45963c3777394606c, type: 3}
 --- !u!114 &1100565035 stripped
