@@ -4,7 +4,11 @@ using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
 public class CharacterMovement : MonoBehaviour
+
 {
+    public EndScreen EndScreen;
+    public LevelLoader transition;
+
     private readonly string attackAnim = "PlayerAttack";
     private readonly string idleAnim = "Player_Idle";
 
@@ -33,14 +37,25 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (!GameController.Instance.endScreen)
         {
-            if (!isAttackingNow)
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Debug.Log("Playing attack");
-                playerAnimator.Play(attackAnim);
-                isAttackingNow = true;
-                StartCoroutine(FreeAttackLater());
+                if (!isAttackingNow)
+                {
+                    Debug.Log("Playing attack");
+                    playerAnimator.Play(attackAnim);
+                    isAttackingNow = true;
+                    StartCoroutine(FreeAttackLater());
+                }
+            }
+        } else
+        {
+            if (Input.anyKeyDown)
+            {
+                transition.reloadLevel();
+                EndScreen.LevelEnd(false);
+                GameController.Instance.endScreen = false;
             }
         }
     }
@@ -55,46 +70,49 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float moveX = Input.GetAxis("Horizontal") * speedmultiplier;
-        float moveY = Input.GetAxis("Vertical") * speedmultiplier;
-        float newRotation = transform.rotation.eulerAngles.z;
+        if (!GameController.Instance.endScreen)
+        {
+            float moveX = Input.GetAxis("Horizontal") * speedmultiplier;
+            float moveY = Input.GetAxis("Vertical") * speedmultiplier;
+            float newRotation = transform.rotation.eulerAngles.z;
 
-        if (moveX > 0f && moveY == 0f)
-        {
-            newRotation = -90f;
+            if (moveX > 0f && moveY == 0f)
+            {
+                newRotation = -90f;
+            }
+            else if (moveX < 0f && moveY == 0f)
+            {
+                newRotation = 90f;
+            }
+            else if (moveY > 0f && moveX == 0f)
+            {
+                newRotation = 0f;
+            }
+            else if (moveY < 0f && moveX == 0f)
+            {
+                newRotation = 180f;
+            }
+            else if (moveX > 0f && moveY > 0f)
+            {
+                newRotation = -45f;
+            }
+            else if (moveX > 0f && moveY < 0f)
+            {
+                newRotation = -135f;
+            }
+            else if (moveX < 0f && moveY > 0f)
+            {
+                newRotation = 45f;
+            }
+            else if (moveX < 0f && moveY < 0f)
+            {
+                newRotation = 135f;
+            }
+            newLocationStore.x = moveX;
+            newLocationStore.y = moveY;
+            charRigidbody.velocity = newLocationStore;
+            transform.rotation = Quaternion.Euler(0f, 0f, newRotation);
         }
-        else if(moveX < 0f && moveY == 0f)
-        {
-            newRotation = 90f;
-        }
-        else if(moveY > 0f && moveX == 0f)
-        {
-            newRotation = 0f;
-        }
-        else if(moveY < 0f && moveX == 0f)
-        {
-            newRotation = 180f;
-        }
-        else if(moveX > 0f && moveY > 0f)
-        {
-            newRotation = -45f;
-        }
-        else if(moveX > 0f && moveY < 0f)
-        {
-            newRotation = -135f;
-        }
-        else if(moveX < 0f && moveY > 0f)
-        {
-            newRotation = 45f;
-        }
-        else if(moveX < 0f && moveY < 0f)
-        {
-            newRotation = 135f;
-        }
-        newLocationStore.x = moveX;
-        newLocationStore.y = moveY;
-        charRigidbody.velocity = newLocationStore;
-        transform.rotation = Quaternion.Euler(0f, 0f, newRotation);
     }
 
     private void LateUpdate()
@@ -115,6 +133,8 @@ public class CharacterMovement : MonoBehaviour
             {
                 //Win level
                 Debug.Log("Win Win Win!!!");
+                GameController.Instance.endScreen = true;
+                EndScreen.LevelEnd(true);
             }
             else
             { 
