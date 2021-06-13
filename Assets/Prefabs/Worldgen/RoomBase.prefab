@@ -544,7 +544,9 @@ MonoBehaviour:
   wallNorth: {fileID: 1217873676396388170}
   wallWest: {fileID: 5125136380053023362}
   wallSouth: {fileID: 2927955503561416169}
+  monster: 0
   crystalPrefabRef: {fileID: 1629694716538668941, guid: b0a460767b2089148a8fae79c7d6e9f4, type: 3}
+  monsterPrefabRef: {fileID: 6954448157310237285, guid: 54c863ecf9bdb9c4ebb563e788258220, type: 3}
 --- !u!114 &1955677345095788212
 MonoBehaviour:
   m_ObjectHideFlags: 0
