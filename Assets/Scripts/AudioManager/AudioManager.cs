@@ -39,12 +39,12 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Playing sound " + name);
+            //Debug.Log("Playing sound " + name);
             if(s.loop)
             {
                 if(s.source.isPlaying)
                 {
-                    Debug.Log("Did not play sound " + name + " because the source is already playing");
+                    //Debug.Log("Did not play sound " + name + " because the source is already playing");
                 }
                 else
                 {
@@ -63,7 +63,7 @@ public class AudioManager : MonoBehaviour
     public void Stop(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        Debug.Log("Stopping sound " + name);
+        //Debug.Log("Stopping sound " + name);
         if (s.source.isPlaying)
         {
             s.source.Stop();

@@ -11,6 +11,7 @@ TagManager:
   - HealthManager
   - HealthDrop
   - AudioManager
+  - BGMHandler
   layers:
   - Default
   - TransparentFX

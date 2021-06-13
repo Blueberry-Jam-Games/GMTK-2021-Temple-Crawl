@@ -54,6 +54,7 @@ public class CharacterMovement : MonoBehaviour
                     isAttackingNow = true;
                     UpdateAnimationState(attackAnim);
                     StartCoroutine(FreeAttackLater());
+                    soundPlayer.Play("SwordNothing");
                 }
             }
         } else
@@ -175,6 +176,7 @@ public class CharacterMovement : MonoBehaviour
             else
             { 
                 claimedCrystals[crystalComponent.GetNumber()] = true;
+                soundPlayer.Play("Crystal");
             }
         }
         else if(other.CompareTag("HealthDrop"))
@@ -192,5 +194,6 @@ public class CharacterMovement : MonoBehaviour
         health -= damage;
         GameController.Instance.NotifyHudOfHealthChange(health);
         charRigidbody.AddForce(-transform.up * (damage / 50f));
+        soundPlayer.Play("PlayerHit");
     }
 }

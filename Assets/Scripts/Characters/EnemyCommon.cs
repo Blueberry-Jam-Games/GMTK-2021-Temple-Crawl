@@ -31,6 +31,10 @@ public class EnemyCommon : MonoBehaviour
 
     private int angle = 0;
 
+    public AudioSource snakeMove;
+    public AudioSource snakeHit;
+    private AudioManager soundPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +42,8 @@ public class EnemyCommon : MonoBehaviour
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         ownedCollider = GetComponent<Collider2D>();
+        GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        soundPlayer = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     public bool activeTargeting = false;
@@ -48,7 +54,7 @@ public class EnemyCommon : MonoBehaviour
     void Update()
     {
         //Stops ai's outside of loaded areas
-        if(GameController.Instance.DistanceFromPlayer(transform.position) < 10)
+        if(GameController.Instance.DistanceFromPlayer(transform.position) < 10 && health > 0)
         {
             if (activeTargeting)
             {
@@ -172,6 +178,10 @@ public class EnemyCommon : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            UpdateAnimationMode(IDLE);
+        }
     }
 
     private Vector2 PosAsVec2(Vector3 pos)
@@ -246,6 +256,20 @@ public class EnemyCommon : MonoBehaviour
             animator.Play(animation);
             animationMode = newMode;
         }
+        if(newMode == MOVE)
+        {
+            if (!snakeMove.isPlaying)
+            {
+                snakeMove.Play();
+            }
+        }
+        else
+        {
+            if (snakeMove.isPlaying)
+            {
+                snakeMove.Stop();
+            }
+        }
     }
 
     public void PlayerInflictDamage()
@@ -262,7 +286,12 @@ public class EnemyCommon : MonoBehaviour
                 GameObject healthDrop = GameObject.Instantiate(healthDropPrefab);
                 healthDrop.transform.position = transform.position;
             }
+            soundPlayer.Play("SnakeDeath");
             Destroy(this.gameObject);
+        }
+        else
+        {
+            snakeHit.Play();
         }
         activeTargeting = true;
         ApplyKnockback(damage);

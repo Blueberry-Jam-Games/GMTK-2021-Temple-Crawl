@@ -45,62 +45,74 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - clip: {fileID: 8300000, guid: 26df9ed7cab0f2548932ed5a518bb93d, type: 3}
-    name: BackgrounLoop
+    name: BackgroundMusicOpening
     volume: 1
-    pitch: 0
     source: {fileID: 0}
     spatialize: 0
+    loop: 0
   - clip: {fileID: 8300000, guid: 429e5dcfcc9e18a49bbc51eea8494a7c, type: 3}
-    name: BackgrounOpening
+    name: BackgroundLoop
     volume: 1
-    pitch: 0
     source: {fileID: 0}
     spatialize: 0
+    loop: 1
   - clip: {fileID: 8300000, guid: 0951a9731ad0c8d478d12e3756a65739, type: 3}
     name: Crystal
     volume: 1
-    pitch: 0
     source: {fileID: 0}
     spatialize: 0
+    loop: 0
   - clip: {fileID: 8300000, guid: 60595b1843b401c428b003681db5f957, type: 3}
     name: HeartPickup
     volume: 1
-    pitch: 0
     source: {fileID: 0}
     spatialize: 0
+    loop: 0
   - clip: {fileID: 8300000, guid: 400964f5b16498d47b9e5c384768b34f, type: 3}
     name: PlayerHit
     volume: 1
-    pitch: 0
     source: {fileID: 0}
     spatialize: 0
+    loop: 0
   - clip: {fileID: 8300000, guid: a366c1102ef42df43a6aded27827f87d, type: 3}
     name: SnakeHit
     volume: 1
-    pitch: 0
     source: {fileID: 0}
     spatialize: 0
+    loop: 0
   - clip: {fileID: 8300000, guid: b6e2d03890500eb4b83be19caf10fe19, type: 3}
     name: WallHit
     volume: 1
-    pitch: 0
     source: {fileID: 0}
     spatialize: 0
+    loop: 0
   - clip: {fileID: 8300000, guid: fdc08a20f775ea44c88276c6376a2a15, type: 3}
     name: Walking
     volume: 1
-    pitch: 0
     source: {fileID: 0}
     spatialize: 0
+    loop: 1
   - clip: {fileID: 8300000, guid: fad55a20b13fb1342a0832d6c3b34ee0, type: 3}
     name: SnakeDeath
     volume: 1
-    pitch: 0
     source: {fileID: 0}
     spatialize: 0
+    loop: 0
   - clip: {fileID: 8300000, guid: b91575dbe9a50fe4a9cc2978499dba44, type: 3}
     name: RockSlide
     volume: 1
-    pitch: 0
     source: {fileID: 0}
     spatialize: 0
+    loop: 0
+  - clip: {fileID: 8300000, guid: a37211c4dcfa34f4cb8d74526befd8d3, type: 3}
+    name: SnakeMoving
+    volume: 1
+    source: {fileID: 0}
+    spatialize: 0
+    loop: 1
+  - clip: {fileID: 8300000, guid: 523805f887de4484cbf34c8a3bd2cc5a, type: 3}
+    name: SwordNothing
+    volume: 0.75
+    source: {fileID: 0}
+    spatialize: 0
+    loop: 0

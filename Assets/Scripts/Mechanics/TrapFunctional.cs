@@ -18,6 +18,8 @@ public class TrapFunctional : MonoBehaviour
 
     private int trapState = 0; //0 is untripped, 1 is tripped, 2 is executed
 
+    public AudioSource rockfallSound;
+
     private void Start()
     {
         dynamicMaterialInstance = GetComponent<SpriteRenderer>().material;
@@ -42,6 +44,7 @@ public class TrapFunctional : MonoBehaviour
         {
             if (gcRef.DistanceFromPlayer(transform.position) > 2f)
             {
+                rockfallSound.Play();
                 rockwallComponent.SetActive(true);
                 trapState = 2;
             }

@@ -296,6 +296,8 @@ MonoBehaviour:
   slowMovementSpeed: 0.03
   fastMovementSpeed: 0.05
   healthDropPrefab: {fileID: 6614005057137790536, guid: 8029831892f862040bf1410e6929c5c1, type: 3}
+  snakeMove: {fileID: 2017637594907271768}
+  snakeHit: {fileID: 186738950902216709}
   activeTargeting: 0
   distanceToMove: 0
   movementStartedAt: {x: 0, y: 0, z: 0}
