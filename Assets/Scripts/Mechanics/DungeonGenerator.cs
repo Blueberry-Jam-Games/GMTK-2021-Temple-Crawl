@@ -28,6 +28,8 @@ public class DungeonGenerator : MonoBehaviour
     public int monsterRoomPercent = 70;
     public int monsterHallPercent = 1;
 
+    public int trapHallPercent = 10;
+
     private int startingRoomX;
     private int startingRoomY;
 
@@ -370,6 +372,53 @@ public class DungeonGenerator : MonoBehaviour
                     if (Random.Range(0, 100) < monsterHallPercent)
                     {
                         world[checkX, checkY].monstor = true;
+                    } else if(Random.Range(0, 100) < trapHallPercent)
+                    {
+                        bool[] connectedHalls = IsHallConnected(checkX, checkY);
+
+                        world[checkX, checkY].trap = 1;
+
+                        if (!connectedHalls[0] && Random.Range(0, 3) == 1 && checkY + 1 < gameplayHeight)
+                        {
+                            //Trap Layer
+                            world[checkX, checkY].trap = 0;
+                            world[checkX, checkY].trapType = Random.Range(1, 3);
+                            world[checkX, checkY].trapColour = Random.Range(0, 3);
+                            world[checkX, checkY + 1].connectedDown = true;
+                            world[checkX, checkY].connectedUp = true;
+
+                        }
+
+                        if (!connectedHalls[1] && Random.Range(0, 3) == 1 && checkY > 0)
+                        {
+                            //Trap Layer
+                            world[checkX, checkY].trap = 1;
+                            world[checkX, checkY].trapType = Random.Range(1, 3);
+                            world[checkX, checkY].trapColour = Random.Range(0, 3);
+                            world[checkX, checkY - 1].connectedUp = true;
+                            world[checkX, checkY].connectedDown = true;
+                        }
+
+                        if (!connectedHalls[2] && Random.Range(0, 3) == 1 && checkX > 0)
+                        {
+                            //Trap Layer
+                            world[checkX, checkY].trap = 2;
+                            world[checkX, checkY].trapType = Random.Range(1, 3);
+                            world[checkX, checkY].trapColour = Random.Range(0, 3);
+                            world[checkX - 1, checkY].connectedRight = true;
+                            world[checkX, checkY].connectedLeft = true;
+                        }
+
+                        if (!connectedHalls[3] && Random.Range(0, 3) == 1 && checkX + 1 < gameplayWidth)
+                        {
+                            //Trap Layer
+                            world[checkX, checkY].trap = 3;
+                            world[checkX, checkY].trapType = Random.Range(1, 3);
+                            world[checkX, checkY].trapColour = Random.Range(0, 3);
+                            world[checkX + 1, checkY].connectedLeft = true;
+                            world[checkX, checkY].connectedRight = true;
+                        }
+
                     }
                 }
 
@@ -420,6 +469,9 @@ public class DungeonGenerator : MonoBehaviour
                 PreGenArea pga = world[x, y];
                 area.SetWallConfig(pga.type, pga.connectedRight, pga.connectedUp, pga.connectedLeft, pga.connectedDown);
                 area.monster = world[x, y].monstor;
+                area.trapFacing = world[x, y].trap;
+                area.trapType = world[x, y].trapType;
+                area.trapColour = world[x, y].trapColour;
                 visabilityCuller.rooms[x, y] = area;
             }
         }
@@ -521,6 +573,9 @@ public class DungeonGenerator : MonoBehaviour
         public bool connectedRight;
         public bool accessable;
         public bool monstor;
+        public int trap;
+        public int trapColour;
+        public int trapType;
     }
 
     public enum RoomType

@@ -20,6 +20,12 @@ public abstract class GeneratedArea : MonoBehaviour
     protected DungeonGenerator.RoomType type;
     public bool monster = false;
 
+    public int trapFacing;
+    public int trapColour;
+    public int trapType = 0;
+
+    public SpriteRenderer spriteRenderer;
+
     public virtual void SetWallConfig(DungeonGenerator.RoomType type, bool east, bool north, bool west, bool south)
     {
         wallEastEnabled = east;
@@ -50,6 +56,8 @@ public abstract class GeneratedArea : MonoBehaviour
         {
             ApplyWallConfig();
         }
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
