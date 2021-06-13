@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,15 +37,19 @@ public class EnemyCommon : MonoBehaviour
     public AudioSource snakeAttack;
     private AudioManager soundPlayer;
 
+    private Material dynamicMaterialInstance;
+
     // Start is called before the first frame update
     void Start()
     {
+        dynamicMaterialInstance = GetComponent<SpriteRenderer>().material;
         health = maxHealth;
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         ownedCollider = GetComponent<Collider2D>();
         GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
         soundPlayer = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        colourAffiliation = UnityEngine.Random.Range(0, 3);
     }
 
     public bool activeTargeting = false;
@@ -54,6 +59,33 @@ public class EnemyCommon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        try
+        {
+            if (colourAffiliation == 0)
+            {
+                dynamicMaterialInstance.SetFloat("Yellow", 1);
+                dynamicMaterialInstance.SetFloat("Cyan", 0);
+                dynamicMaterialInstance.SetFloat("Magenta", 0);
+            }
+            else if (colourAffiliation == 1)
+            {
+                dynamicMaterialInstance.SetFloat("Yellow", 0);
+                dynamicMaterialInstance.SetFloat("Cyan", 1);
+                dynamicMaterialInstance.SetFloat("Magenta", 0);
+            }
+            else
+            {
+                dynamicMaterialInstance.SetFloat("Yellow", 0);
+                dynamicMaterialInstance.SetFloat("Cyan", 0);
+                dynamicMaterialInstance.SetFloat("Magenta", 1);
+            }
+            
+        }
+        catch (Exception)
+        {
+            //pass
+        }
+
         //Stops ai's outside of loaded areas
         if(GameController.Instance.DistanceFromPlayer(transform.position) < 8f && health > 0)
         {
@@ -119,7 +151,7 @@ public class EnemyCommon : MonoBehaviour
                 {
                     bool acceptableAngle = false;
                     //Pick a new, wall free rotation
-                    angle = Random.Range(0, 7) * -45;
+                    angle = UnityEngine.Random.Range(0, 7) * -45;
                     ownedCollider.enabled = false;
                     do
                     {
@@ -131,7 +163,7 @@ public class EnemyCommon : MonoBehaviour
                             //Debug.Log("Hit something with tag " + rc2d.collider.tag + " at distance " + rc2d.distance + " with angle " + angle);
                             if(rc2d.distance > 1f)
                             {
-                                distanceToMove = Random.Range(1f, rc2d.distance);
+                                distanceToMove = UnityEngine.Random.Range(1f, rc2d.distance);
                                 movementStartedAt = transform.position;
                                 acceptableAngle = true;
                             }
@@ -150,7 +182,7 @@ public class EnemyCommon : MonoBehaviour
                         else
                         {
                             acceptableAngle = true;
-                            distanceToMove = Random.Range(1f, 5f);
+                            distanceToMove = UnityEngine.Random.Range(1f, 5f);
                             movementStartedAt = transform.position;
                         }
                     } while (!acceptableAngle);
@@ -283,7 +315,7 @@ public class EnemyCommon : MonoBehaviour
         if(health <= 0)
         {
             //Try spawn health drop
-            if(Random.Range(0, 100) > 75) // 25% chance to spawn
+            if(UnityEngine.Random.Range(0, 100) > 75) // 25% chance to spawn
             {
                 GameObject healthDrop = GameObject.Instantiate(healthDropPrefab);
                 healthDrop.transform.position = transform.position;
