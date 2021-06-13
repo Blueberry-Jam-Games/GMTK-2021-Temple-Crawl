@@ -41,6 +41,8 @@ public class CharacterMovement : MonoBehaviour
         soundPlayer = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
+    private int timeDead = 0;
+
     private void Update()
     {
         if (!GameController.Instance.endScreen)
@@ -57,12 +59,14 @@ public class CharacterMovement : MonoBehaviour
                     soundPlayer.Play("SwordNothing");
                 }
             }
-        } else
+        } 
+        else
         {
+            timeDead++;
             charRigidbody.velocity = new Vector2(0, 0);
             UpdateAnimationState(idleAnim);
 
-            if (Input.anyKeyDown)
+            if (Input.anyKeyDown && timeDead > 60)
             {
                 transition.reloadLevel();
                 EndScreen.LevelEnd(false, true);

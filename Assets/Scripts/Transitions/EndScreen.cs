@@ -26,12 +26,6 @@ public class EndScreen : MonoBehaviour
     public Text[] looseT;
     public Text[] winT;
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void LevelEnd(bool fadeIn, bool winCondition)
     {
         StartCoroutine(Fade(fadeIn, winCondition));
