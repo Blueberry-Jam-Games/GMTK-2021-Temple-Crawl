@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1507753380139256050}
   - component: {fileID: 8289513714676823400}
   - component: {fileID: 3817743416878356700}
+  - component: {fileID: 863493893580421638}
   m_Layer: 0
   m_Name: NewCrystal
-  m_TagString: Untagged
+  m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,3 +102,19 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7cacf637ef133f14aab6548ee063ffa9, type: 3}
   - {fileID: 21300000, guid: ad680108bfb12464ab8e83891252a645, type: 3}
   winColor: {fileID: 21300000, guid: fb0eaf84ce17b2245af111c9f7c63a34, type: 3}
+--- !u!58 &863493893580421638
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5676992074494376156}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03, y: -0.06}
+  serializedVersion: 2
+  m_Radius: 0.44

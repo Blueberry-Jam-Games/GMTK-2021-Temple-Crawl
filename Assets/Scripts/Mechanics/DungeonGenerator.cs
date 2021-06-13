@@ -376,9 +376,10 @@ public class DungeonGenerator : MonoBehaviour
                     {
                         bool[] connectedHalls = IsHallConnected(checkX, checkY);
 
-                        world[checkX, checkY].trap = 1;
+                        world[checkX, checkY].trap = 0;
+                        world[checkX, checkY].trapType = 0;
 
-                        if (!connectedHalls[0] && Random.Range(0, 3) == 1 && checkY + 1 < gameplayHeight)
+                        if (!connectedHalls[0] && Random.Range(0, 6) == 1 && checkY + 1 < gameplayHeight)
                         {
                             //Trap Layer
                             world[checkX, checkY].trap = 0;
@@ -387,9 +388,7 @@ public class DungeonGenerator : MonoBehaviour
                             world[checkX, checkY + 1].connectedDown = true;
                             world[checkX, checkY].connectedUp = true;
 
-                        }
-
-                        if (!connectedHalls[1] && Random.Range(0, 3) == 1 && checkY > 0)
+                        } else if (!connectedHalls[1] && Random.Range(0, 5) == 1 && checkY > 0)
                         {
                             //Trap Layer
                             world[checkX, checkY].trap = 1;
@@ -397,9 +396,7 @@ public class DungeonGenerator : MonoBehaviour
                             world[checkX, checkY].trapColour = Random.Range(0, 3);
                             world[checkX, checkY - 1].connectedUp = true;
                             world[checkX, checkY].connectedDown = true;
-                        }
-
-                        if (!connectedHalls[2] && Random.Range(0, 3) == 1 && checkX > 0)
+                        } else if (!connectedHalls[2] && Random.Range(0, 4) == 1 && checkX > 0)
                         {
                             //Trap Layer
                             world[checkX, checkY].trap = 2;
@@ -407,9 +404,7 @@ public class DungeonGenerator : MonoBehaviour
                             world[checkX, checkY].trapColour = Random.Range(0, 3);
                             world[checkX - 1, checkY].connectedRight = true;
                             world[checkX, checkY].connectedLeft = true;
-                        }
-
-                        if (!connectedHalls[3] && Random.Range(0, 3) == 1 && checkX + 1 < gameplayWidth)
+                        } else if (!connectedHalls[3] && Random.Range(0, 3) == 1 && checkX + 1 < gameplayWidth)
                         {
                             //Trap Layer
                             world[checkX, checkY].trap = 3;
@@ -417,6 +412,9 @@ public class DungeonGenerator : MonoBehaviour
                             world[checkX, checkY].trapColour = Random.Range(0, 3);
                             world[checkX + 1, checkY].connectedLeft = true;
                             world[checkX, checkY].connectedRight = true;
+                        } else
+                        {
+                            
                         }
 
                     }
