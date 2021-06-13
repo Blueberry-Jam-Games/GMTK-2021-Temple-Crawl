@@ -12,6 +12,7 @@ public class BackgroundMusicHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        continuePlaying = true;
         StartCoroutine(StartLoopLater());
     }
 
@@ -38,5 +39,4 @@ public class BackgroundMusicHandler : MonoBehaviour
             loop.Stop(); 
         }
     }
-
 }
