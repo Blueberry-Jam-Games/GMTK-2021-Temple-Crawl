@@ -13,7 +13,7 @@ public class BackgroundMusicHandler : MonoBehaviour
     void Start()
     {
         continuePlaying = true;
-        StartCoroutine(StartLoopLater());
+        //StartCoroutine(StartLoopLater());
     }
 
     private IEnumerator StartLoopLater()
